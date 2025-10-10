@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komunitas | Misbakhul Mustofin</title>
+    <link rel="icon" type="image/x-icon" href="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .community-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(37,99,235,0.05) 0%, rgba(30,64,175,0.05) 100%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
+                        <span class="ml-2 text-xl font-bold text-primary">mustofin.com</span>
+                    </a>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Beranda</a>
+                    <a href="about.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Tentang Saya</a>
+                    <a href="portfolio.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Portofolio</a>
+                    <a href="/community" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-blue-700 hover:text-accent">Komunitas</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Kontak</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Komunitas & Volunteering</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Kontribusi saya dalam pengembangan komunitas edukasi dan profesional</p>
+            </div>
+
+            <!-- Community Initiatives -->
+            <div class="mb-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Inisiatif Komunitas</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md community-card transition duration-300">
+                        <div class="bg-primary bg-opacity-10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                            <i data-feather="users" class="text-primary w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Malang Tech Community</h3>
+                        <p class="text-gray-600 mb-4">Komunitas pengembang dan praktisi teknologi di Malang yang fokus pada berbagi pengetahuan dan kolaborasi.</p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center">
+                            Pelajari Lebih Lanjut
+                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md community-card transition duration-300">
+                        <div class="bg-primary bg-opacity-10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                            <i data-feather="book" class="text-primary w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Edukasi Digital untuk Sekolah</h3>
+                        <p class="text-gray-600 mb-4">Program volunteer untuk membawa literasi digital ke sekolah-sekolah di daerah terpencil.</p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center">
+                            Pelajari Lebih Lanjut
+                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md community-card transition duration-300">
+                        <div class="bg-primary bg-opacity-10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                            <i data-feather="mic" class="text-primary w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Agile Practitioner Meetup</h3>
+                        <p class="text-gray-600 mb-4">Komunitas bagi praktisi Agile untuk berbagi pengalaman dan belajar bersama.</p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center">
+                            Pelajari Lebih Lanjut
+                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mentorship Programs -->
+            <div class="mb-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Program Mentoring</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
+                                <i data-feather="user-plus" class="text-primary w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-1">Career Accelerator Program</h3>
+                                <p class="text-gray-700">Program mentoring 3 bulan untuk membantu profesional muda mengembangkan karier di bidang teknologi dan manajemen proyek.</p>
+                            </div>
+                        </div>
+                        <div class="pl-14">
+                            <ul class="list-disc text-gray-700 space-y-2">
+                                <li>Sesi 1-on-1 mingguan</li>
+                                <li>Review CV dan persiapan interview</li>
+                                <li>Panduan pengembangan keterampilan teknis</li>
+                                <li>Jaringan profesional</li>
+                            </ul>
+                            <a href="#" class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none">
+                                Daftar Sebagai Mentee
+                            </a>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
+                                <i data-feather="code" class="text-primary w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-1">Student Tech Mentorship</h3>
+                                <p class="text-gray-700">Bimbingan untuk siswa SMA dan mahasiswa yang ingin mempelajari dasar-dasar pemrograman dan teknologi.</p>
+                            </div>
+                        </div>
+                        <div class="pl-14">
+                            <ul class="list-disc text-gray-700 space-y-2">
+                                <li>Belajar pemrograman dari dasar</li>
+                                <li>Proyek kolaboratif sederhana</li>
+                                <li>Persiapan kompetisi teknologi</li>
+                                <li>Panduan karier di bidang IT</li>
+                            </ul>
+                            <a href="#" class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none">
+                                Daftar Sebagai Mentee
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Kata Mereka</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="testimonial-card p-8 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <img class="w-12 h-12 rounded-full mr-4" src="http://static.photos/people/200x200/7" alt="Testimonial">
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Rina Wijaya</h4>
+                                <p class="text-gray-600 text-sm">Peserta Career Accelerator</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic">"Program mentoring dari Mas Mustofin sangat membantu saya dalam transisi karier ke bidang teknologi. Tidak hanya memberikan panduan teknis, tapi juga membuka jaringan profesional yang berharga."</p>
+                    </div>
+                    <div class="testimonial-card p-8 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <img class="w-12 h-12 rounded-full mr-4" src="http://static.photos/people/200x200/8" alt="Testimonial">
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Dika Pratama</h4>
+                                <p class="text-gray-600 text-sm">Anggota Malang Tech Community</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic">"Komunitas yang dibangun Mas Mustofin sangat inklusif dan kaya akan kesempatan belajar. Saya bisa berkembang baik secara teknis maupun soft skills melalui berbagai acara yang diselenggarakan."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="mt-16 bg-primary rounded-xl p-8 text-center">
+                <h2 class="text-2xl font-bold text-white mb-4">Bergabunglah dengan Komunitas Kami</h2>
+                <p class="text-blue-100 mb-6 max-w-2xl mx-auto">Dapatkan manfaat dari jaringan profesional, kesempatan belajar, dan pengalaman berharga dalam berbagai inisiatif komunitas.</p>
+                <a href="/contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100">
+                    Hubungi Saya
+                    <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
+                    <span class="ml-2 text-lg font-medium text-gray-900">mustofin.com</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com/in/mustofin" target="_blank" class="text-gray-600 hover:text-primary">
+                        <i data-feather="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://tiktok.com/@mustofin" target="_blank" class="text-gray-600 hover:text-primary">
+                        <i data-feather="youtube" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://instagram.com/tofiniu" target="_blank" class="text-gray-600 hover:text-primary">
+                        <i data-feather="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="mailto:mustofin.work@gmail.com" class="text-gray-600 hover:text-primary">
+                        <i data-feather="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-200 pt-8 text-center md:text-left">
+                <p class="text-gray-500 text-sm">© 2025 Mustofin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

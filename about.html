@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Saya | Misbakhul Mustofin</title>
+    <link rel="icon" type="image/x-icon" href="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #2563eb;
+            border: 3px solid white;
+        }
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 29px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
+                        <span class="ml-2 text-xl font-bold text-primary">mustofin.com</span>
+                    </a>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Beranda</a>
+                    <a href="/about" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-blue-700 hover:text-accent">Tentang Saya</a>
+                    <a href="portfolio.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Portofolio</a>
+                    <a href="community.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Komunitas</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Kontak</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Tentang Saya</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Perjalanan profesional dan filosofi kerja saya</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 mb-16">
+                <div class="lg:w-1/3">
+                    <div class="bg-white p-8 rounded-xl shadow-md sticky top-28">
+                        <img class="w-full h-auto rounded-lg mb-6" src="https://media.licdn.com/dms/image/v2/D5603AQFlmiNjBSgsWA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718266634668?e=1762992000&v=beta&t=UF-tq8sWLIH9dNEs-JauHFqTr-9-KKC6DRJ3SSYnRJE" alt="Misbakhul Mustofin">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Misbakhul Mustofin</h3>
+                        <p class="text-gray-600 mb-4">Agile Project Manager | Educator | Trainer</p>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i data-feather="map-pin" class="text-primary mr-2 w-5 h-5"></i>
+                                <span class="text-gray-700">Malang, Indonesia</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="briefcase" class="text-primary mr-2 w-5 h-5"></i>
+                                <span class="text-gray-700">Shipper, SMA Islam Almaarif</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="award" class="text-primary mr-2 w-5 h-5"></i>
+                                <span class="text-gray-700">Certified Agile Practitioner</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Keahlian</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Manajemen Proyek</span>
+                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Agile Methodology</span>
+                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Spreadsheet Automation</span>
+                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Pelatihan & Edukasi</span>
+                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Digital Transformation</span>
+                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Komunikasi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-2/3">
+                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Profil Profesional</h2>
+                        <p class="text-gray-700 mb-4">Saya adalah seorang praktisi Agile dan manajer proyek dengan fokus pada pengembangan solusi logistik berbasis teknologi di Shipper. Selain itu, saya juga aktif sebagai pendidik di SMA Islam Almaarif, mengajarkan keterampilan digital dan manajemen proyek kepada pelajar.</p>
+                        <p class="text-gray-700 mb-4">Sebagai trainer, saya telah membantu berbagai tim dan organisasi dalam mengadopsi metodologi Agile serta mengimplementasikan otomatisasi menggunakan spreadsheet untuk meningkatkan efisiensi operasional.</p>
+                        <p class="text-gray-700">Pendekatan saya dalam bekerja selalu berpusat pada kolaborasi, pembelajaran berkelanjutan, dan penciptaan nilai nyata bagi semua pemangku kepentingan.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Riwayat Profesional</h2>
+                        <div class="relative pl-12 timeline">
+                            <div class="relative mb-8 timeline-item">
+                                <h3 class="text-xl font-semibold text-gray-900">Agile Project Manager</h3>
+                                <div class="flex items-center text-gray-600 mb-2">
+                                    <span>Shipper</span>
+                                    <span class="mx-2">•</span>
+                                    <span>2021 - Sekarang</span>
+                                </div>
+                                <p class="text-gray-700">Memimpin implementasi metodologi Agile dalam pengembangan produk digital logistik, termasuk pelatihan tim dan perbaikan proses secara berkelanjutan.</p>
+                            </div>
+                            <div class="relative mb-8 timeline-item">
+                                <h3 class="text-xl font-semibold text-gray-900">Guru & Pelatih Teknologi</h3>
+                                <div class="flex items-center text-gray-600 mb-2">
+                                    <span>SMA Islam Almaarif</span>
+                                    <span class="mx-2">•</span>
+                                    <span>2019 - Sekarang</span>
+                                </div>
+                                <p class="text-gray-700">Mengajar dan melatih siswa dalam keterampilan digital, pemrograman dasar, dan manajemen proyek sederhana.</p>
+                            </div>
+                            <div class="relative mb-8 timeline-item">
+                                <h3 class="text-xl font-semibold text-gray-900">Trainer Spreadsheet Automation</h3>
+                                <div class="flex items-center text-gray-600 mb-2">
+                                    <span>Freelance</span>
+                                    <span class="mx-2">•</span>
+                                    <span>2018 - Sekarang</span>
+                                </div>
+                                <p class="text-gray-700">Menyelenggarakan pelatihan dan konsultasi otomatisasi proses bisnis menggunakan Google Sheets dan Excel untuk berbagai perusahaan dan organisasi.</p>
+                            </div>
+                            <div class="relative timeline-item">
+                                <h3 class="text-xl font-semibold text-gray-900">Event Organizer</h3>
+                                <div class="flex items-center text-gray-600 mb-2">
+                                    <span>Komunitas Edukasi</span>
+                                    <span class="mx-2">•</span>
+                                    <span>2016 - Sekarang</span>
+                                </div>
+                                <p class="text-gray-700">Mengorganisir berbagai acara edukasi dan pelatihan untuk komunitas dan lembaga pendidikan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Filosofi Kerja</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
+                                    <i data-feather="target" class="text-primary w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Fokus pada Nilai</h3>
+                                    <p class="text-gray-700">Saya percaya bahwa setiap upaya harus memberikan nilai nyata bagi pengguna akhir dan pemangku kepentingan.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
+                                    <i data-feather="refresh-cw" class="text-primary w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Pembelajaran Berkelanjutan</h3>
+                                    <p class="text-gray-700">Teknologi dan metodologi terus berkembang, dan saya berkomitmen untuk terus belajar dan beradaptasi.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
+                                    <i data-feather="users" class="text-primary w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Kolaborasi Tim</h3>
+                                    <p class="text-gray-700">Solusi terbaik muncul dari kolaborasi dan pertukaran ide antara anggota tim yang beragam.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
+                    <span class="ml-2 text-lg font-medium text-gray-900">mustofin.com</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com/in/mustofin" target="_blank" class="text-gray-600 hover:text-primary">
+                        <i data-feather="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://tiktok.com/@mustofin" target="_blank" class="text-gray-600 hover:text-primary">
+                        <i data-feather="youtube" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://instagram.com/tofiniu" target="_blank" class="text-gray-600 hover:text-primary">
+                        <i data-feather="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="mailto:mustofin.work@gmail.com" class="text-gray-600 hover:text-primary">
+                        <i data-feather="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-200 pt-8 text-center md:text-left">
+                <p class="text-gray-500 text-sm">© 2025 Mustofin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

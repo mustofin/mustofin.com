@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak | Misbakhul Mustofin</title>
+    <link rel="icon" type="image/x-icon" href="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .form-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
+                        <span class="ml-2 text-xl font-bold text-primary">mustofin.com</span>
+                    </a>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Beranda</a>
+                    <a href="about.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Tentang Saya</a>
+                    <a href="portfolio.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Portofolio</a>
+                    <a href="community.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Komunitas</a>
+                    <a href="/contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-blue-700 hover:text-accent">Kontak</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Hubungi Saya</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Mari berdiskusi tentang kolaborasi, pertanyaan, atau kesempatan lainnya</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h2>
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
+                                <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subjek</label>
+                                <select id="subject" name="subject" class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="collaboration">Kolaborasi Proyek</option>
+                                    <option value="training">Permintaan Pelatihan</option>
+                                    <option value="speaking">Undangan sebagai Pembicara</option>
+                                    <option value="other">Lainnya</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Pesan</label>
+                                <textarea id="message" name="message" rows="5" class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    Kirim Pesan
+                                    <i data-feather="send" class="ml-2 inline w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Informasi Kontak</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
+                                    <i data-feather="mail" class="text-primary w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Email</h3>
+                                    <a href="mailto:mustofin.work@gmail.com" class="text-gray-700 hover:text-primary">mustofin.work@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
+                                    <i data-feather="linkedin" class="text-primary w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">LinkedIn</h3>
+                                    <a href="https://linkedin.com/in/mustofin" target="_blank" class="text-gray-700 hover:text-primary">linkedin.com/in/mustofin</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
+                                    <i data-feather="instagram" class="text-primary w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Instagram</h3>
+                                    <a href="https://instagram.com/tofiniu" target="_blank" class="text-gray-700 hover:text-primary">@tofiniu</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
+                                    <i data-feather="youtube" class="text-primary w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">TikTok</h3>
+                                    <a href="https://tiktok.com/@mustofin" target="_blank" class="text-gray-700 hover:text-primary">@mustofin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Lokasi</h2>
+                        <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden mb-4">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126438.36373411882!2d112.57218955!3d-7.97863965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7882745f06a6e9%3A0x3027a76e352bda0!2sMalang%2C%20Malang%20City%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1718266634668!5m2!1sen!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <p class="text-gray-700">Berdasarkan di Malang, Jawa Timur, Indonesia. Saya juga tersedia untuk konsultasi online via Zoom atau Google Meet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
+                    <span class="ml-2 text-lg font-medium text-gray-900">mustofin.com</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com/in/mustofin" target="_blank" class="text-gray-600 hover:text-primary">
+                        <i data-feather="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://tiktok.com/@mustofin" target="_blank" class="text-gray-600 hover:text-primary">
+                        <i data-feather="youtube" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://instagram.com/tofiniu" target="_blank" class="text-gray-600 hover:text-primary">
+                        <i data-feather="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="mailto:mustofin.work@gmail.com" class="text-gray-600 hover:text-primary">
+                        <i data-feather="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-200 pt-8 text-center md:text-left">
+                <p class="text-gray-500 text-sm">© 2025 Mustofin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the data to a server
+            // For demo purposes, we'll log it and show an alert
+            console.log({ name, email, subject, message });
+            
+            alert('Terima kasih! Pesan Anda telah terkirim. Saya akan segera menghubungi Anda kembali.');
+            document.getElementById('contactForm').reset();
+        });
+    </script>
+</body>
+</html>
