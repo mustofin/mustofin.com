@@ -29,13 +29,7 @@
         .hero-section {
             background: linear-gradient(135deg, rgba(37,99,235,0.95) 0%, rgba(30,64,175,0.95) 100%);
         }
-        .nav-link:hover {
-            color: #f59e0b;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+       
         .vanta-bg {
             position: absolute;
             top: 0;
@@ -48,31 +42,9 @@
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800 bg-white">
+    
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="/" class="flex-shrink-0 flex items-center">
-                        <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
-                        <span class="ml-2 text-xl font-bold text-primary">mustofin.com</span>
-                    </a>
-                </div>
-                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
-                    <a href="/" class="text-blue-700 nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-accent">Beranda</a>
-                    <a href="about.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Tentang Saya</a>
-                    <a href="portfolio.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Portofolio</a>
-                    <a href="community.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Komunitas</a>
-                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Kontak</a>
-                </div>
-                <div class="-mr-2 flex items-center md:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
-                        <i data-feather="menu"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-placeholder"></div>
 
     <!-- Hero Section -->
     <div id="vanta-bg" class="vanta-bg"></div>
@@ -83,7 +55,7 @@
             <p class="text-xl md:text-2xl font-semibold mb-8">Belajar, Berkarya, Berkembang</p>
             <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto">Agile project manager, trainer, dan educator yang fokus pada pengembangan profesional dan pendidikan berbasis teknologi.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="/portfolio" class="px-8 py-3 bg-accent text-white font-medium rounded-md hover:bg-yellow-600 transition duration-300">
+                <a href="portfolio.html" class="px-8 py-3 bg-accent text-white font-medium rounded-md hover:bg-yellow-600 transition duration-300">
                     Lihat Portofolio
                 </a>
                 <a href="https://blog.mustofin.com" target="_blank" class="px-8 py-3 bg-white text-primary font-medium rounded-md hover:bg-gray-100 transition duration-300">
@@ -96,21 +68,21 @@
     <!-- Quick Links Section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="/about" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center">
+            <a href="about.html" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center">
                 <div class="bg-primary bg-opacity-10 p-4 rounded-full mb-4">
                     <i data-feather="user" class="text-primary w-8 h-8"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900">Tentang Saya</h3>
                 <p class="text-gray-600">Pelajari perjalanan karier dan keahlian profesional saya</p>
             </a>
-            <a href="/portfolio" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center">
+            <a href="portfolio.html" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center">
                 <div class="bg-primary bg-opacity-10 p-4 rounded-full mb-4">
                     <i data-feather="briefcase" class="text-primary w-8 h-8"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2 text-gray-900">Portofolio</h3>
                 <p class="text-gray-600">Eksplorasi proyek dan pencapaian profesional saya</p>
             </a>
-            <a href="/contact" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center">
+            <a href="contact.html" class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center">
                 <div class="bg-primary bg-opacity-10 p-4 rounded-full mb-4">
                     <i data-feather="mail" class="text-primary w-8 h-8"></i>
                 </div>
@@ -121,76 +93,28 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-50 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
-                    <p class="mt-4 text-gray-500">Portal profesional untuk berbagi pengetahuan, pengalaman, dan karya.</p>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">Navigasi</h3>
-                    <ul class="mt-4 space-y-2">
-                        <li><a href="/" class="text-gray-600 hover:text-primary">Beranda</a></li>
-                        <li><a href="/about" class="text-gray-600 hover:text-primary">Tentang Saya</a></li>
-                        <li><a href="/portfolio" class="text-gray-600 hover:text-primary">Portofolio</a></li>
-                        <li><a href="/community" class="text-gray-600 hover:text-primary">Komunitas</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">Tautan Eksternal</h3>
-                    <ul class="mt-4 space-y-2">
-                        <li><a href="https://blog.mustofin.com" target="_blank" class="text-gray-600 hover:text-primary">Blog</a></li>
-                        <li><a href="https://notes.mustofin.com" target="_blank" class="text-gray-600 hover:text-primary">Catatan Kuliah</a></li>
-                        <li><a href="https://learn.mustofin.com" target="_blank" class="text-gray-600 hover:text-primary">Kelas & Materi</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">Media Sosial</h3>
-                    <div class="mt-4 flex space-x-4">
-                        <a href="https://linkedin.com/in/mustofin" target="_blank" class="text-gray-600 hover:text-primary">
-                            <i data-feather="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="https://tiktok.com/@mustofin" target="_blank" class="text-gray-600 hover:text-primary">
-                            <i data-feather="youtube" class="w-5 h-5"></i>
-                        </a>
-                        <a href="https://instagram.com/tofiniu" target="_blank" class="text-gray-600 hover:text-primary">
-                            <i data-feather="instagram" class="w-5 h-5"></i>
-                        </a>
-                        <a href="mailto:mustofin.work@gmail.com" class="text-gray-600 hover:text-primary">
-                            <i data-feather="mail" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-12 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 text-sm">© 2025 Mustofin. All rights reserved.</p>
-                <div class="mt-4 md:mt-0 flex space-x-6">
-                    <a href="/privacy" class="text-gray-500 hover:text-primary text-sm">Privacy Policy</a>
-                    <a href="/terms" class="text-gray-500 hover:text-primary text-sm">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
+
+    <script src="scripts.js"></script>
 
     <script>
-        feather.replace();
-        
-        // Vanta.js background animation
-        VANTA.WAVES({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x3b82f6,
-            shininess: 50.00,
-            waveHeight: 15.00,
-            waveSpeed: 0.75,
-            zoom: 0.8
+        // Memastikan Vanta.js berjalan setelah elemen #vanta-bg ada di DOM
+        document.addEventListener("DOMContentLoaded", function() {
+            VANTA.WAVES({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x3b82f6,
+                shininess: 50.00,
+                waveHeight: 15.00,
+                waveSpeed: 0.75,
+                zoom: 0.8
+            });
         });
     </script>
 </body>

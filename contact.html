@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
     <style>
         .contact-card:hover {
             transform: translateY(-5px);
@@ -21,30 +22,7 @@
 </head>
 <body class="font-sans antialiased text-gray-800 bg-white">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="/" class="flex-shrink-0 flex items-center">
-                        <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
-                        <span class="ml-2 text-xl font-bold text-primary">mustofin.com</span>
-                    </a>
-                </div>
-                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
-                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Beranda</a>
-                    <a href="about.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Tentang Saya</a>
-                    <a href="portfolio.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Portofolio</a>
-                    <a href="community.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-accent">Komunitas</a>
-                    <a href="/contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-blue-700 hover:text-accent">Kontak</a>
-                </div>
-                <div class="-mr-2 flex items-center md:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
-                        <i data-feather="menu"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-placeholder"></div>
 
     <!-- Main Content -->
     <main class="pt-24 pb-16">
@@ -145,33 +123,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-50 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center mb-4 md:mb-0">
-                    <img class="h-8 w-auto" src="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg" alt="Mustofin Logo">
-                    <span class="ml-2 text-lg font-medium text-gray-900">mustofin.com</span>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="https://linkedin.com/in/mustofin" target="_blank" class="text-gray-600 hover:text-primary">
-                        <i data-feather="linkedin" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://tiktok.com/@mustofin" target="_blank" class="text-gray-600 hover:text-primary">
-                        <i data-feather="youtube" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://instagram.com/tofiniu" target="_blank" class="text-gray-600 hover:text-primary">
-                        <i data-feather="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="mailto:mustofin.work@gmail.com" class="text-gray-600 hover:text-primary">
-                        <i data-feather="mail" class="w-5 h-5"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-8 border-t border-gray-200 pt-8 text-center md:text-left">
-                <p class="text-gray-500 text-sm">© 2025 Mustofin. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
+
+    <script src="scripts.js"></script>
 
     <script>
         feather.replace();

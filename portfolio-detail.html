@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Portofolio | Misbakhul Mustofin</title>
+    <link rel="icon" type="image/x-icon" href="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .portfolio-item {
+            transition: all 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .project-image {
+            transition: transform 0.3s ease;
+        }
+        .project-image:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+
+    <!-- Navigation -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="container mx-auto px-6 py-12 pt-24">
+        <a href="portfolio.html" class="flex items-center text-blue-600 hover:text-blue-800 mb-8">
+            <i data-feather="arrow-left" class="mr-2 w-5 h-5"></i> Kembali ke Portofolio
+        </a>
+
+        <div id="project-content">
+            <div id="project-template" class="hidden">
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img id="project-image" src="" alt="Project Image" class="w-full h-full object-cover project-image">
+                        </div>
+                        <div class="p-8 md:w-1/2">
+                            <span id="project-category" class="inline-block px-3 py-1 text-sm font-semibold text-white rounded-full mb-4"></span>
+                            <h1 id="project-title" class="text-3xl font-bold text-gray-800 mb-4"></h1>
+                            <p id="project-date" class="text-gray-500 mb-6"></p>
+                            <div id="project-description" class="text-gray-600 mb-8 space-y-4"></div>
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Key Achievements</h3>
+                                <ul id="project-achievements" class="list-disc pl-5 space-y-2 text-gray-600"></ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Technologies/Approaches</h3>
+                                <div id="project-technologies" class="flex flex-wrap gap-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 py-6 bg-gray-50">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Project Gallery</h3>
+                        <div id="project-gallery" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="teaching-template" class="hidden">
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img id="teaching-image" src="" alt="Teaching Image" class="w-full h-full object-cover project-image">
+                        </div>
+                        <div class="p-8 md:w-1/2">
+                            <span id="teaching-category" class="inline-block px-3 py-1 text-sm font-semibold text-white rounded-full mb-4"></span>
+                            <h1 id="teaching-title" class="text-3xl font-bold text-gray-800 mb-4"></h1>
+                            <div class="flex items-center mb-4">
+                                <i data-feather="calendar" class="mr-2 text-gray-500"></i>
+                                <p id="teaching-date" class="text-gray-500"></p>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i data-feather="users" class="mr-2 text-gray-500"></i>
+                                <p id="teaching-audience" class="text-gray-500"></p>
+                            </div>
+                            <div id="teaching-description" class="text-gray-600 mb-8 space-y-4"></div>
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Course Content</h3>
+                                <ul id="teaching-content" class="list-disc pl-5 space-y-2 text-gray-600"></ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Outcomes</h3>
+                                <div id="teaching-outcomes" class="text-gray-600 space-y-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 py-6 bg-gray-50">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Teaching Materials</h3>
+                        <div id="teaching-materials" class="space-y-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="speaking-template" class="hidden">
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img id="speaking-image" src="" alt="Speaking Image" class="w-full h-full object-cover project-image">
+                        </div>
+                        <div class="p-8 md:w-1/2">
+                            <span id="speaking-category" class="inline-block px-3 py-1 text-sm font-semibold text-white rounded-full mb-4"></span>
+                            <h1 id="speaking-title" class="text-3xl font-bold text-gray-800 mb-4"></h1>
+                            <div class="flex items-center mb-4">
+                                <i data-feather="calendar" class="mr-2 text-gray-500"></i>
+                                <p id="speaking-date" class="text-gray-500"></p>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i data-feather="map-pin" class="mr-2 text-gray-500"></i>
+                                <p id="speaking-location" class="text-gray-500"></p>
+                            </div>
+                            <div class="flex items-center mb-6">
+                                <i data-feather="users" class="mr-2 text-gray-500"></i>
+                                <p id="speaking-audience" class="text-gray-500"></p>
+                            </div>
+                            <div id="speaking-description" class="text-gray-600 mb-8 space-y-4"></div>
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Key Takeaways</h3>
+                                <ul id="speaking-takeaways" class="list-disc pl-5 space-y-2 text-gray-600"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 py-6 bg-gray-50">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Event Photos</h3>
+                        <div id="speaking-gallery" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="event-template" class="hidden">
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img id="event-image" src="" alt="Event Image" class="w-full h-full object-cover project-image">
+                        </div>
+                        <div class="p-8 md:w-1/2">
+                            <span id="event-category" class="inline-block px-3 py-1 text-sm font-semibold text-white rounded-full mb-4"></span>
+                            <h1 id="event-title" class="text-3xl font-bold text-gray-800 mb-4"></h1>
+                            <div class="flex items-center mb-4">
+                                <i data-feather="calendar" class="mr-2 text-gray-500"></i>
+                                <p id="event-date" class="text-gray-500"></p>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i data-feather="map-pin" class="mr-2 text-gray-500"></i>
+                                <p id="event-location" class="text-gray-500"></p>
+                            </div>
+                            <div class="flex items-center mb-6">
+                                <i data-feather="users" class="mr-2 text-gray-500"></i>
+                                <p id="event-attendees" class="text-gray-500"></p>
+                            </div>
+                            <div id="event-description" class="text-gray-600 mb-8 space-y-4"></div>
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Event Highlights</h3>
+                                <ul id="event-highlights" class="list-disc pl-5 space-y-2 text-gray-600"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 py-6 bg-gray-50">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Event Gallery</h3>
+                        <div id="event-gallery" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="research-template" class="hidden">
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img id="research-image" src="" alt="Research Image" class="w-full h-full object-cover project-image">
+                        </div>
+                        <div class="p-8 md:w-1/2">
+                            <span id="research-category" class="inline-block px-3 py-1 text-sm font-semibold text-white rounded-full mb-4"></span>
+                            <h1 id="research-title" class="text-3xl font-bold text-gray-800 mb-4"></h1>
+                            <div class="flex items-center mb-4">
+                                <i data-feather="calendar" class="mr-2 text-gray-500"></i>
+                                <p id="research-date" class="text-gray-500"></p>
+                            </div>
+                            <div class="flex items-center mb-6">
+                                <i data-feather="book" class="mr-2 text-gray-500"></i>
+                                <p id="research-publisher" class="text-gray-500"></p>
+                            </div>
+                            <div id="research-description" class="text-gray-600 mb-8 space-y-4"></div>
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Key Findings</h3>
+                                <ul id="research-findings" class="list-disc pl-5 space-y-2 text-gray-600"></ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Methodology</h3>
+                                <div id="research-methodology" class="text-gray-600 space-y-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 py-6 bg-gray-50">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Related Publications</h3>
+                        <div id="research-publications" class="space-y-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="apps-template" class="hidden">
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img id="apps-image" src="" alt="App Image" class="w-full h-full object-cover project-image">
+                        </div>
+                        <div class="p-8 md:w-1/2">
+                            <span id="apps-category" class="inline-block px-3 py-1 text-sm font-semibold text-white rounded-full mb-4"></span>
+                            <h1 id="apps-title" class="text-3xl font-bold text-gray-800 mb-4"></h1>
+                            <div class="flex items-center mb-4">
+                                <i data-feather="calendar" class="mr-2 text-gray-500"></i>
+                                <p id="apps-date" class="text-gray-500"></p>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i data-feather="download" class="mr-2 text-gray-500"></i>
+                                <p id="apps-downloads" class="text-gray-500"></p>
+                            </div>
+                            <div class="flex items-center mb-6">
+                                <i data-feather="smartphone" class="mr-2 text-gray-500"></i>
+                                <p id="apps-platform" class="text-gray-500"></p>
+                            </div>
+                            <div id="apps-description" class="text-gray-600 mb-8 space-y-4"></div>
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Key Features</h3>
+                                <ul id="apps-features" class="list-disc pl-5 space-y-2 text-gray-600"></ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Technologies Used</h3>
+                                <div id="apps-technologies" class="flex flex-wrap gap-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 py-6 bg-gray-50">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">App Screenshots</h3>
+                        <div id="apps-screenshots" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script src="scripts.js"></script>
+
+    <script>
+        feather.replace();
+
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type');
+        const id = urlParams.get('id');
+
+        // Sample data - in a real app, this would come from an API
+        const portfolioData = {
+            project: {
+                1: {
+                    title: "Digital Transformation Initiative",
+                    category: "Project Management",
+                    categoryClass: "bg-blue-500",
+                    date: "January 2022 - June 2023",
+                    image: "http://static.photos/office/640x360/11",
+                    description: "<p>Led a comprehensive digital transformation project for a mid-sized manufacturing company, transitioning their legacy systems to modern cloud-based solutions. The project involved coordinating between multiple departments and external vendors to ensure a smooth transition with minimal disruption to operations.</p><p>The transformation resulted in a 40% increase in operational efficiency and reduced IT maintenance costs by 35% annually.</p>",
+                    achievements: [
+                        "Successfully migrated 15 legacy systems to modern platforms",
+                        "Reduced operational costs by 35% through automation",
+                        "Improved cross-departmental collaboration through unified systems",
+                        "Trained 200+ employees on new digital tools"
+                    ],
+                    technologies: ["Cloud Computing", "Agile Methodology", "Change Management", "System Integration"],
+                    gallery: [
+                        "http://static.photos/office/320x240/111",
+                        "http://static.photos/office/320x240/112",
+                        "http://static.photos/office/320x240/113"
+                    ]
+                },
+                2: {
+                    title: "Process Optimization Project",
+                    category: "Project Management",
+                    categoryClass: "bg-blue-500",
+                    date: "March 2021 - September 2021",
+                    image: "http://static.photos/office/640x360/12",
+                    description: "<p>Directed a cross-functional team to analyze and redesign operational processes for a logistics company. The project focused on eliminating redundancies and implementing lean methodologies across warehouse operations and supply chain management.</p><p>The optimization resulted in a 30% reduction in operational costs and improved delivery times by 25%.</p>",
+                    achievements: [
+                        "Identified and eliminated 15 redundant processes",
+                        "Implemented automated tracking system for inventory",
+                        "Reduced order processing time from 48 to 24 hours",
+                        "Achieved 98% client satisfaction post-implementation"
+                    ],
+                    technologies: ["Lean Six Sigma", "Process Mapping", "Workflow Automation", "KPI Tracking"],
+                    gallery: [
+                        "http://static.photos/office/320x240/121",
+                        "http://static.photos/office/320x240/122",
+                        "http://static.photos/office/320x240/123"
+                    ]
+                }
+            },
+            teaching: {
+                1: {
+                    title: "Advanced Web Development Course",
+                    category: "Teaching Activity",
+                    categoryClass: "bg-green-500",
+                    date: "Fall Semester 2022",
+                    audience: "45 undergraduate Computer Science students",
+                    image: "http://static.photos/education/640x360/21",
+                    description: "<p>Developed and delivered a semester-long course covering modern web development technologies and best practices. The curriculum included hands-on projects using React, Node.js, and MongoDB, with emphasis on responsive design and accessibility.</p><p>Students completed the course with portfolio-ready projects and many secured internships at tech companies.</p>",
+                    content: [
+                        "React fundamentals and advanced concepts",
+                        "Server-side development with Node.js and Express",
+                        "Database design with MongoDB",
+                        "Authentication and security best practices",
+                        "Deployment strategies and CI/CD pipelines"
+                    ],
+                    outcomes: "<p>100% of students reported increased confidence in full-stack development. Several student projects were featured in the university's annual tech showcase, and three student teams won awards at a regional hackathon using skills learned in the course.</p>",
+                    materials: [
+                        "<a href='#' class='text-blue-500 hover:underline'>Course Syllabus</a>",
+                        "<a href='#' class='text-blue-500 hover:underline'>Lecture Slides (PDF)</a>",
+                        "<a href='#' class='text-blue-500 hover:underline'>Sample Project Code</a>",
+                        "<a href='#' class='text-blue-500 hover:underline'>Student Showcase Video</a>"
+                    ]
+                },
+                2: {
+                    title: "Data Science Workshop Series",
+                    category: "Teaching Activity",
+                    categoryClass: "bg-green-500",
+                    date: "January - March 2023",
+                    audience: "30 industry professionals",
+                    image: "http://static.photos/education/640x360/22",
+                    description: "<p>Designed and facilitated an intensive 8-week workshop series introducing data science concepts to professionals from non-technical backgrounds. The workshops covered Python for data analysis, basic machine learning concepts, and data visualization techniques.</p><p>Participants gained practical skills they could immediately apply in their roles, with several reporting successful implementation of data-driven decision making in their organizations.</p>",
+                    content: [
+                        "Python fundamentals for data analysis",
+                        "Pandas and NumPy for data manipulation",
+                        "Data visualization with Matplotlib and Seaborn",
+                        "Introduction to machine learning with scikit-learn",
+                        "Case studies from various industries"
+                    ],
+                    outcomes: "<p>Post-workshop surveys showed a 90% satisfaction rate, with participants reporting increased confidence in working with data. Several attendees transitioned to more data-focused roles within their companies after completing the workshop.</p>",
+                    materials: [
+                        "<a href='#' class='text-blue-500 hover:underline'>Workshop Outline</a>",
+                        "<a href='#' class='text-blue-500 hover:underline'>Jupyter Notebook Examples</a>",
+                        "<a href='#' class='text-blue-500 hover:underline'>Participant Testimonials</a>"
+                    ]
+                }
+            },
+            speaking: {
+                1: {
+                    title: "Tech Conference Keynote: The Future of AI in Business",
+                    category: "Speaking Engagement",
+                    categoryClass: "bg-purple-500",
+                    date: "May 15, 2023",
+                    location: "TechSummit 2023, San Francisco",
+                    audience: "500+ attendees",
+                    image: "http://static.photos/event/640x360/31",
+                    description: "<p>Delivered the opening keynote address at TechSummit 2023, exploring the transformative potential of artificial intelligence across various business sectors. The presentation combined technical insights with practical business applications, highlighting both opportunities and ethical considerations.</p><p>The talk was well-received, sparking numerous follow-up discussions and leading to three consulting engagements with conference attendees.</p>",
+                    takeaways: [
+                        "Understanding different AI maturity levels in organizations",
+                        "Practical applications of machine learning in business processes",
+                        "Ethical considerations in AI implementation",
+                        "Strategies for building AI-ready teams and infrastructure",
+                        "Case studies of successful AI integration"
+                    ],
+                    gallery: [
+                        "http://static.photos/event/320x240/311",
+                        "http://static.photos/event/320x240/312",
+                        "http://static.photos/event/320x240/313"
+                    ]
+                }
+            },
+            event: {
+                1: {
+                    title: "Annual Developer Conference",
+                    category: "Event Organization",
+                    categoryClass: "bg-red-500",
+                    date: "October 10-12, 2022",
+                    location: "Convention Center, Chicago",
+                    attendees: "500+ developers and IT professionals",
+                    image: "http://static.photos/event/640x360/41",
+                    description: "<p>Planned and executed a 3-day developer conference featuring 50+ technical sessions, workshops, and networking events. Managed a team of 15 volunteers and coordinated with 30 speakers from leading tech companies.</p><p>The event received a 95% satisfaction rating from attendees and led to the formation of several local developer communities and study groups.</p>",
+                    highlights: [
+                        "Keynote from CTO of a Fortune 500 tech company",
+                        "Hands-on workshops on emerging technologies",
+                        "Career fair with 20+ tech companies",
+                        "24-hour hackathon with $10,000 in prizes",
+                        "First-time attendee networking lounge"
+                    ],
+                    gallery: [
+                        "http://static.photos/event/320x240/411",
+                        "http://static.photos/event/320x240/412",
+                        "http://static.photos/event/320x240/413",
+                        "http://static.photos/event/320x240/414",
+                        "http://static.photos/event/320x240/415"
+                    ]
+                }
+            },
+            research: {
+                1: {
+                    title: "Machine Learning Optimization Study",
+                    category: "Research Publication",
+                    categoryClass: "bg-yellow-500",
+                    date: "Published: August 2022",
+                    publisher: "Journal of Artificial Intelligence Research (Vol. 45)",
+                    image: "http://static.photos/science/640x360/51",
+                    description: "<p>Conducted an 18-month research study exploring novel approaches to optimize neural network training processes. The research focused on reducing computational resources while maintaining model accuracy, with potential applications in edge computing and IoT devices.</p><p>The study was cited by several subsequent papers and led to a collaboration with a major tech company to implement the findings in their mobile AI applications.</p>",
+                    findings: [
+                        "Developed a new weight initialization method reducing training time by 22%",
+                        "Identified optimal batch sizes for different network architectures",
+                        "Created a framework for dynamic learning rate adjustment",
+                        "Demonstrated application in computer vision tasks"
+                    ],
+                    methodology: "<p>The research employed a combination of theoretical analysis and empirical testing across multiple benchmark datasets. We implemented our algorithms in PyTorch and compared performance against standard approaches using identical hardware configurations. Statistical significance was verified through repeated trials.</p>",
+                    publications: [
+                        "<a href='#' class='text-blue-500 hover:underline'>Full Research Paper (PDF)</a>",
+                        "<a href='#' class='text-blue-500 hover:underline'>Conference Presentation Slides</a>",
+                        "<a href='#' class='text-blue-500 hover:underline'>GitHub Repository with Code</a>"
+                    ]
+                }
+            },
+            apps: {
+                1: {
+                    title: "Productivity Pro App",
+                    category: "Mobile Application",
+                    categoryClass: "bg-indigo-500",
+                    date: "Released: March 2023",
+                    downloads: "10,000+ downloads on App Store and Google Play",
+                    platform: "iOS and Android",
+                    image: "http://static.photos/technology/640x360/61",
+                    description: "<p>Designed and developed a comprehensive productivity app combining task management, time tracking, and habit formation tools. The app features a clean, intuitive interface with customizable workflows to suit different productivity styles.</p><p>With over 10,000 downloads and a 4.7-star average rating, the app has helped users collectively complete over 1 million tasks since launch.</p>",
+                    features: [
+                        "Smart task prioritization using AI",
+                        "Time tracking with detailed analytics",
+                        "Cross-platform synchronization",
+                        "Customizable productivity workflows",
+                        "Integration with calendar and email"
+                    ],
+                    technologies: ["Flutter", "Firebase", "Dart", "Provider State Management", "REST API"],
+                    screenshots: [
+                        "http://static.photos/technology/320x240/611",
+                        "http://static.photos/technology/320x240/612",
+                        "http://static.photos/technology/320x240/613",
+                        "http://static.photos/technology/320x240/614"
+                    ]
+                },
+                2: {
+                    title: "Math Adventure Game",
+                    category: "Educational Game",
+                    categoryClass: "bg-indigo-500",
+                    date: "Released: November 2022",
+                    downloads: "5,000+ downloads in first 3 months",
+                    platform: "iOS, Android, and Web",
+                    image: "http://static.photos/gaming/640x360/62",
+                    description: "<p>Created an educational game that makes learning math fun for children ages 6-12. The game combines adventure storytelling with curriculum-aligned math challenges, adapting difficulty based on player performance.</p><p>Used in over 50 classrooms with positive feedback from teachers about engagement and learning outcomes. Nominated for Best Educational App in the 2023 EdTech Awards.</p>",
+                    features: [
+                        "300+ math challenges aligned with school curriculum",
+                        "Adaptive difficulty system",
+                        "Engaging story with 20+ levels",
+                        "Progress tracking for parents and teachers",
+                        "Multiplayer challenge mode"
+                    ],
+                    technologies: ["Unity", "C#", "Photon Engine", "Game Analytics", "In-App Purchases"],
+                    screenshots: [
+                        "http://static.photos/gaming/320x240/621",
+                        "http://static.photos/gaming/320x240/622",
+                        "http://static.photos/gaming/320x240/623",
+                        "http://static.photos/gaming/320x240/624"
+                    ]
+                }
+            }
+        };
+
+        // Load appropriate template based on URL parameters
+        document.addEventListener('DOMContentLoaded', () => {
+            if (type && id && portfolioData[type] && portfolioData[type][id]) {
+                const data = portfolioData[type][id];
+                const template = document.getElementById(`${type}-template`).cloneNode(true);
+                template.classList.remove('hidden');
+                document.getElementById('project-content').innerHTML = '';
+                document.getElementById('project-content').appendChild(template);
+
+                // Populate data
+                if (type === 'project') {
+                    document.getElementById('project-title').textContent = data.title;
+                    document.getElementById('project-category').textContent = data.category;
+                    document.getElementById('project-category').classList.add(data.categoryClass);
+                    document.getElementById('project-date').textContent = data.date;
+                    document.getElementById('project-image').src = data.image;
+                    document.getElementById('project-description').innerHTML = data.description;
+                    
+                    const achievementsList = document.getElementById('project-achievements');
+                    data.achievements.forEach(achievement => {
+                        const li = document.createElement('li');
+                        li.textContent = achievement;
+                        achievementsList.appendChild(li);
+                    });
+
+                    const techContainer = document.getElementById('project-technologies');
+                    data.technologies.forEach(tech => {
+                        const span = document.createElement('span');
+                        span.classList.add('bg-blue-100', 'text-blue-800', 'text-xs', 'px-2', 'py-1', 'rounded');
+                        span.textContent = tech;
+                        techContainer.appendChild(span);
+                    });
+
+                    const galleryContainer = document.getElementById('project-gallery');
+                    data.gallery.forEach(img => {
+                        const div = document.createElement('div');
+                        div.innerHTML = `<img src="${img}" alt="Gallery Image" class="w-full h-32 object-cover rounded">`;
+                        galleryContainer.appendChild(div);
+                    });
+                } 
+                else if (type === 'teaching') {
+                    document.getElementById('teaching-title').textContent = data.title;
+                    document.getElementById('teaching-category').textContent = data.category;
+                    document.getElementById('teaching-category').classList.add(data.categoryClass);
+                    document.getElementById('teaching-date').textContent = data.date;
+                    document.getElementById('teaching-audience').textContent = data.audience;
+                    document.getElementById('teaching-image').src = data.image;
+                    document.getElementById('teaching-description').innerHTML = data.description;
+                    
+                    const contentList = document.getElementById('teaching-content');
+                    data.content.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        contentList.appendChild(li);
+                    });
+
+                    document.getElementById('teaching-outcomes').innerHTML = data.outcomes;
+
+                    const materialsContainer = document.getElementById('teaching-materials');
+                    data.materials.forEach(material => {
+                        const div = document.createElement('div');
+                        div.innerHTML = material;
+                        materialsContainer.appendChild(div);
+                    });
+                }
+                else if (type === 'speaking') {
+                    document.getElementById('speaking-title').textContent = data.title;
+                    document.getElementById('speaking-category').textContent = data.category;
+                    document.getElementById('speaking-category').classList.add(data.categoryClass);
+                    document.getElementById('speaking-date').textContent = data.date;
+                    document.getElementById('speaking-location').textContent = data.location;
+                    document.getElementById('speaking-audience').textContent = data.audience;
+                    document.getElementById('speaking-image').src = data.image;
+                    document.getElementById('speaking-description').innerHTML = data.description;
+                    
+                    const takeawaysList = document.getElementById('speaking-takeaways');
+                    data.takeaways.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        takeawaysList.appendChild(li);
+                    });
+
+                    const galleryContainer = document.getElementById('speaking-gallery');
+                    data.gallery.forEach(img => {
+                        const div = document.createElement('div');
+                        div.innerHTML = `<img src="${img}" alt="Gallery Image" class="w-full h-32 object-cover rounded">`;
+                        galleryContainer.appendChild(div);
+                    });
+                }
+                else if (type === 'event') {
+                    document.getElementById('event-title').textContent = data.title;
+                    document.getElementById('event-category').textContent = data.category;
+                    document.getElementById('event-category').classList.add(data.categoryClass);
+                    document.getElementById('event-date').textContent = data.date;
+                    document.getElementById('event-location').textContent = data.location;
+                    document.getElementById('event-attendees').textContent = data.attendees;
+                    document.getElementById('event-image').src = data.image;
+                    document.getElementById('event-description').innerHTML = data.description;
+                    
+                    const highlightsList = document.getElementById('event-highlights');
+                    data.highlights.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        highlightsList.appendChild(li);
+                    });
+
+                    const galleryContainer = document.getElementById('event-gallery');
+                    data.gallery.forEach(img => {
+                        const div = document.createElement('div');
+                        div.innerHTML = `<img src="${img}" alt="Gallery Image" class="w-full h-32 object-cover rounded">`;
+                        galleryContainer.appendChild(div);
+                    });
+                }
+                else if (type === 'research') {
+                    document.getElementById('research-title').textContent = data.title;
+                    document.getElementById('research-category').textContent = data.category;
+                    document.getElementById('research-category').classList.add(data.categoryClass);
+                    document.getElementById('research-date').textContent = data.date;
+                    document.getElementById('research-publisher').textContent = data.publisher;
+                    document.getElementById('research-image').src = data.image;
+                    document.getElementById('research-description').innerHTML = data.description;
+                    
+                    const findingsList = document.getElementById('research-findings');
+                    data.findings.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        findingsList.appendChild(li);
+                    });
+
+                    document.getElementById('research-methodology').innerHTML = data.methodology;
+
+                    const publicationsContainer = document.getElementById('research-publications');
+                    data.publications.forEach(pub => {
+                        const div = document.createElement('div');
+                        div.innerHTML = pub;
+                        publicationsContainer.appendChild(div);
+                    });
+                }
+                else if (type === 'apps') {
+                    document.getElementById('apps-title').textContent = data.title;
+                    document.getElementById('apps-category').textContent = data.category;
+                    document.getElementById('apps-category').classList.add(data.categoryClass);
+                    document.getElementById('apps-date').textContent = data.date;
+                    document.getElementById('apps-downloads').textContent = data.downloads;
+                    document.getElementById('apps-platform').textContent = data.platform;
+                    document.getElementById('apps-image').src = data.image;
+                    document.getElementById('apps-description').innerHTML = data.description;
+                    
+                    const featuresList = document.getElementById('apps-features');
+                    data.features.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        featuresList.appendChild(li);
+                    });
+
+                    const techContainer = document.getElementById('apps-technologies');
+                    data.technologies.forEach(tech => {
+                        const span = document.createElement('span');
+                        span.classList.add('bg-indigo-100', 'text-indigo-800', 'text-xs', 'px-2', 'py-1', 'rounded');
+                        span.textContent = tech;
+                        techContainer.appendChild(span);
+                    });
+
+                    const screenshotsContainer = document.getElementById('apps-screenshots');
+                    data.screenshots.forEach(img => {
+                        const div = document.createElement('div');
+                        div.innerHTML = `<img src="${img}" alt="Screenshot" class="w-full h-32 object-cover rounded">`;
+                        screenshotsContainer.appendChild(div);
+                    });
+                }
+
+                // Update page title
+                document.title = `${data.title} | Portofolio Mustofin`;
+                
+                // Re-run feather.replace() for dynamically added icons
+                feather.replace();
+
+            } else {
+                // Redirect if parameters are invalid
+                window.location.href = 'portfolio.html';
+            }
+        });
+    </script>
+</body>
+</html>
