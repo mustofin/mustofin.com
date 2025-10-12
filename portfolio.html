@@ -8,19 +8,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="style.css">
     <style>
-        .portfolio-filter button.active {
+        button.active {
             background-color: #2563eb;
             color: white;
         }
+        button.active:hover {
+            background-color: #2563eb;
+        }
         .portfolio-item {
+            cursor: pointer;
             transition: all 0.3s ease;
         }
         .portfolio-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+
         .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
         }
@@ -29,13 +33,25 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2563eb;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800 bg-white">
-    <!-- Navigation -->
     <div id="navbar-placeholder"></div>
 
-    <!-- Main Content -->
     <main class="pt-24 pb-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -43,202 +59,170 @@
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">Kumpulan proyek dan pencapaian profesional saya</p>
             </div>
 
-            <!-- Portfolio Filter -->
             <div class="flex justify-center mb-12">
-                <div class="inline-flex rounded-md shadow-sm portfolio-filter">
-                    <button type="button" class="px-4 py-2 text-sm font-medium rounded-l-lg border border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none active" data-filter="all">
-                        Semua
-                    </button>
-                    <button type="button" class="px-4 py-2 text-sm font-medium border-t border-b border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none" data-filter="project-management">
-                        Manajemen Proyek
-                    </button>
-                    <button type="button" class="px-4 py-2 text-sm font-medium border-t border-b border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none" data-filter="teaching">
-                        Kegiatan Mengajar
-                    </button>
-                    <button type="button" class="px-4 py-2 text-sm font-medium border-t border-b border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none" data-filter="speaking">
-                        Pembicara
-                    </button>
-                    <button type="button" class="px-4 py-2 text-sm font-medium border-t border-b border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none" data-filter="event">
-                        Event Organizer
-                    </button>
-                    <button type="button" class="px-4 py-2 text-sm font-medium border-t border-b border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none" data-filter="research">
-                        Riset
-                    </button>
-                    <button type="button" class="px-4 py-2 text-sm font-medium rounded-r-lg border border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none" data-filter="apps">
-                        Aplikasi & Game
-                    </button>
-                </div>
+                <div id="portfolio-filter-container" class="inline-flex rounded-md shadow-sm flex-wrap justify-center">
+                    </div>
             </div>
 
-            <!-- Portfolio Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Management -->
-                <div class="portfolio-item rounded-xl overflow-hidden shadow-md relative" data-category="project-management">
-                    <div class="h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover" src="http://static.photos/technology/640x360/1" alt="Manajemen Proyek">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-2">
-                            <span class="inline-block px-2 py-1 text-xs font-semibold bg-blue-500 text-white rounded-full mr-2">Manajemen Proyek</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Implementasi Agile di Shipper</h3>
-                        <p class="text-gray-600 mb-4">Memimpin transformasi metodologi Agile untuk tim pengembangan produk logistik digital.</p>
-                        <a href="portfolio-detail.html?type=project&id=1" class="text-primary font-medium inline-flex items-center">
-                            Lihat Detail
-                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
-                        </a>
-                    </div>
-                    <a href="portfolio-detail.html?type=project&id=1" class="absolute inset-0 portfolio-overlay flex items-center justify-center">
-                        <span class="text-white text-lg font-medium">Lihat Proyek</span>
-                    </a>
+            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 </div>
-
-                <!-- Teaching -->
-                <div class="portfolio-item rounded-xl overflow-hidden shadow-md relative" data-category="teaching">
-                    <div class="h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover" src="http://static.photos/education/640x360/2" alt="Kegiatan Mengajar">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-2">
-                            <span class="inline-block px-2 py-1 text-xs font-semibold bg-green-500 text-white rounded-full mr-2">Kegiatan Mengajar</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Program Digital Skills SMA Islam Almaarif</h3>
-                        <p class="text-gray-600 mb-4">Mengembangkan kurikulum dan mengajar keterampilan digital untuk siswa SMA.</p>
-                        <a href="portfolio-detail.html?type=teaching&id=1" class="text-primary font-medium inline-flex items-center">
-                            Lihat Detail
-                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
-                        </a>
-                    </div>
-                    <a href="portfolio-detail.html?type=teaching&id=1" class="absolute inset-0 portfolio-overlay flex items-center justify-center">
-                        <span class="text-white text-lg font-medium">Lihat Proyek</span>
-                    </a>
-                </div>
-
-                <!-- Speaking -->
-                <div class="portfolio-item rounded-xl overflow-hidden shadow-md relative" data-category="speaking">
-                    <div class="h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover" src="http://static.photos/people/640x360/3" alt="Pembicara">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-2">
-                            <span class="inline-block px-2 py-1 text-xs font-semibold bg-purple-500 text-white rounded-full mr-2">Pembicara</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Workshop Agile untuk Startup</h3>
-                        <p class="text-gray-600 mb-4">Sebagai pembicara utama dalam workshop penerapan Agile untuk perusahaan rintisan.</p>
-                        <a href="portfolio-detail.html?type=speaking&id=1" class="text-primary font-medium inline-flex items-center">
-                            Lihat Detail
-                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
-                        </a>
-                    </div>
-                    <a href="portfolio-detail.html?type=speaking&id=1" class="absolute inset-0 portfolio-overlay flex items-center justify-center">
-                        <span class="text-white text-lg font-medium">Lihat Proyek</span>
-                    </a>
-                </div>
-
-                <!-- Event -->
-                <div class="portfolio-item rounded-xl overflow-hidden shadow-md relative" data-category="event">
-                    <div class="h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover" src="http://static.photos/event/640x360/4" alt="Event Organizer">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-2">
-                            <span class="inline-block px-2 py-1 text-xs font-semibold bg-yellow-500 text-white rounded-full mr-2">Event Organizer</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Tech Edu Festival 2023</h3>
-                        <p class="text-gray-600 mb-4">Mengorganisir festival teknologi dan pendidikan tahunan untuk 500+ peserta.</p>
-                        <a href="portfolio-detail.html?type=event&id=1" class="text-primary font-medium inline-flex items-center">
-                            Lihat Detail
-                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
-                        </a>
-                    </div>
-                    <a href="portfolio-detail.html?type=event&id=1" class="absolute inset-0 portfolio-overlay flex items-center justify-center">
-                        <span class="text-white text-lg font-medium">Lihat Proyek</span>
-                    </a>
-                </div>
-
-                <!-- Research -->
-                <div class="portfolio-item rounded-xl overflow-hidden shadow-md relative" data-category="research">
-                    <div class="h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover" src="http://static.photos/science/640x360/5" alt="Riset">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-2">
-                            <span class="inline-block px-2 py-1 text-xs font-semibold bg-red-500 text-white rounded-full mr-2">Riset</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Studi Dampak Digitalisasi di Pendidikan</h3>
-                        <p class="text-gray-600 mb-4">Penelitian tentang efektivitas penerapan teknologi dalam proses belajar mengajar.</p>
-                        <a href="portfolio-detail.html?type=research&id=1" class="text-primary font-medium inline-flex items-center">
-                            Lihat Detail
-                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
-                        </a>
-                    </div>
-                    <a href="portfolio-detail.html?type=research&id=1" class="absolute inset-0 portfolio-overlay flex items-center justify-center">
-                        <span class="text-white text-lg font-medium">Lihat Proyek</span>
-                    </a>
-                </div>
-
-                <!-- Apps -->
-                <div class="portfolio-item rounded-xl overflow-hidden shadow-md relative" data-category="apps">
-                    <div class="h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover" src="http://static.photos/technology/640x360/6" alt="Aplikasi & Game">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-2">
-                            <span class="inline-block px-2 py-1 text-xs font-semibold bg-indigo-500 text-white rounded-full mr-2">Aplikasi & Game</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">EduGame: Belajar Coding</h3>
-                        <p class="text-gray-600 mb-4">Game edukasi untuk mempelajari konsep dasar pemrograman secara interaktif.</p>
-                        <a href="portfolio-detail.html?type=apps&id=1" class="text-primary font-medium inline-flex items-center">
-                            Lihat Detail
-                            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
-                        </a>
-                    </div>
-                    <a href="portfolio-detail.html?type=apps&id=1" class="absolute inset-0 portfolio-overlay flex items-center justify-center">
-                        <span class="text-white text-lg font-medium">Lihat Proyek</span>
-                    </a>
-                </div>
-            </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <div id="footer-placeholder"></div>
 
     <script src="scripts.js"></script>
-
     <script>
-        feather.replace();
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Konfigurasi ---
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbzuQ2vg0P-tCJNm6uGQvuzwFHkoTqYTik6yXcl_xLKtvV-MQXZYeISr2dp1A4RBnf-1ww/exec';
+            const CACHE_KEY = 'portfolioDataCache';
+            const CACHE_DURATION_MS = 6 * 60 * 60 * 1000; // 6 Jam
 
-        // Portfolio filtering
-        document.querySelectorAll('.portfolio-filter button').forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                document.querySelectorAll('.portfolio-filter button').forEach(btn => {
-                    btn.classList.remove('active');
+            const grid = document.getElementById('portfolio-grid');
+            const filterContainer = document.getElementById('portfolio-filter-container');
+            let fullPortfolioData = [];
+
+            const categoryColors = {
+                project: 'bg-blue-500',
+                teaching: 'bg-green-500',
+                speaking: 'bg-purple-500',
+                event: 'bg-yellow-500',
+                research: 'bg-red-500',
+                apps: 'bg-indigo-500',
+            };
+
+            // Fungsi untuk menginisialisasi halaman dengan data
+            function initializePage(data) {
+                fullPortfolioData = data;
+                sessionStorage.setItem('portfolioData', JSON.stringify(fullPortfolioData)); // Simpan untuk halaman detail
+
+                renderCards(fullPortfolioData);
+                generateAndSetupFilters(fullPortfolioData);
+                feather.replace();
+            }
+            
+            // Coba ambil data dari cache
+            try {
+                const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
+                if (cached && (new Date().getTime() - cached.timestamp < CACHE_DURATION_MS)) {
+                    console.log("Memuat data dari cache yang valid.");
+                    initializePage(cached.data);
+                } else {
+                    // Cache tidak ada atau sudah kedaluwarsa, ambil dari API
+                    fetchFromAPI();
+                }
+            } catch (e) {
+                // Jika ada error saat parsing cache, ambil dari API
+                fetchFromAPI();
+            }
+
+            function fetchFromAPI() {
+                console.log("Cache kosong atau kedaluwarsa. Mengambil data dari API.");
+                grid.innerHTML = `<div class="loader-container col-span-3"><div class="loader"></div><p class="text-center text-gray-500">Memuat portofolio...</p></div>`;
+
+                fetch(apiUrl)
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                        return response.json();
+                    })
+                    .then(response => {
+                        if (response.status === 'success' && response.data.length > 0) {
+                            // Simpan data dan timestamp ke cache
+                            const itemToCache = {
+                                data: response.data,
+                                timestamp: new Date().getTime()
+                            };
+                            localStorage.setItem(CACHE_KEY, JSON.stringify(itemToCache));
+                            
+                            // Inisialisasi halaman dengan data baru
+                            initializePage(response.data);
+                        } else {
+                            grid.innerHTML = '<p class="col-span-3 text-center text-gray-500">Tidak ada data portofolio untuk ditampilkan.</p>';
+                            filterContainer.style.display = 'none';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching portfolio data:', error);
+                        grid.innerHTML = '<p class="col-span-3 text-center text-red-500">Gagal memuat data. Silakan coba muat ulang halaman.</p>';
+                        filterContainer.style.display = 'none';
+                    });
+            }
+
+            function renderCards(data) {
+                grid.innerHTML = '';
+                data.forEach(item => {
+                    const cardHtml = `
+                        <div class="portfolio-item rounded-xl overflow-hidden shadow-md" data-category="${item.type}" data-id="${item.id}">
+                            <div class="h-48 overflow-hidden">
+                                <img class="w-full h-full object-cover" src="${item.image_cover}" alt="${item.title}">
+                            </div>
+                            <div class="p-6">
+                                <span class="inline-block px-2 py-1 text-xs font-semibold text-white rounded-full mb-2 ${categoryColors[item.type] || 'bg-gray-500'}">
+                                    ${item.category_label}
+                                </span>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">${item.title}</h3>
+                                <p class="text-gray-600 mb-4">${item.description_short}</p>
+                                <span class="text-blue-600 font-medium inline-flex items-center">
+                                    Lihat Detail <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                                </span>
+                            </div>
+   
+                        </div>
+                    `;
+                    grid.insertAdjacentHTML('beforeend', cardHtml);
+                });
+
+                document.querySelectorAll('.portfolio-item').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const itemId = card.dataset.id;
+                        const selectedItem = fullPortfolioData.find(item => item.id == itemId);
+                        if (selectedItem) {
+                            sessionStorage.setItem('selectedPortfolioItem', JSON.stringify(selectedItem));
+                            window.location.href = `portfolio-detail.html?id=${itemId}`;
+                        }
+                    });
+                });
+            }
+
+            function generateAndSetupFilters(data) {
+                // (Fungsi ini tetap sama)
+                const categories = new Map([['all', 'Semua']]);
+                data.forEach(item => {
+                    if (item.type && item.category_label && !categories.has(item.type)) {
+                        categories.set(item.type, item.category_label);
+                    }
+                });
+
+                let buttonsHtml = '';
+                const categoryArray = Array.from(categories.entries());
+
+                categoryArray.forEach(([type, label], index) => {
+                    const isFirst = index === 0;
+                    const isLast = index === categoryArray.length - 1;
+                    let buttonClasses = "px-4 py-2 text-sm font-medium border-t border-b border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none";
+                    if (isFirst) buttonClasses += " rounded-l-lg border-l";
+                    if (isLast) buttonClasses += " rounded-r-lg border-r";
+                    buttonsHtml += `<button type="button" class="${buttonClasses}" data-filter="${type}">${label}</button>`;
                 });
                 
-                // Add active class to clicked button
-                this.classList.add('active');
+                filterContainer.innerHTML = buttonsHtml;
                 
-                const filter = this.getAttribute('data-filter');
-                
-                // Show all items if 'all' is selected
-                if (filter === 'all') {
-                    document.querySelectorAll('.portfolio-item').forEach(item => {
-                        item.style.display = 'block';
+                const filterButtons = filterContainer.querySelectorAll('button');
+                filterContainer.querySelector('button[data-filter="all"]').classList.add('active');
+
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        const filter = this.getAttribute('data-filter');
+                        document.querySelectorAll('.portfolio-item').forEach(item => {
+                            item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
+                        });
                     });
-                } else {
-                    // Hide all items
-                    document.querySelectorAll('.portfolio-item').forEach(item => {
-                        item.style.display = 'none';
-                    });
-                    
-                    // Show items with matching category
-                    document.querySelectorAll(`.portfolio-item[data-category="${filter}"]`).forEach(item => {
-                        item.style.display = 'block';
-                    });
-                }
-            });
+                });
+            }
         });
     </script>
 </body>
