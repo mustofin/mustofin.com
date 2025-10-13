@@ -8,169 +8,221 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="style.css">
     <style>
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            left: -38px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #2563eb;
-            border: 3px solid white;
-        }
+        /* -- CSS TIMELINE YANG DIPERBAIKI -- */
         .timeline:before {
             content: '';
             position: absolute;
-            left: 29px;
+            left: 20px; /* Posisi garis, tepat di tengah logo 40px */
             top: 0;
-            height: 100%;
+            bottom: 0;
             width: 2px;
-            background: #e5e7eb;
+            background-color: #e5e7eb; /* gray-200 */
+            z-index: 1;
+        }
+        .timeline-logo-container {
+            position: absolute;
+            top: 0;
+            left: 0; /* Rata kiri dengan padding item */
+            width: 42px; /* Sedikit lebih besar untuk border */
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background-color: white;
+            border: 2px solid #e5e7eb; /* gray-200 */
+            z-index: 2; /* Di atas garis timeline */
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2563eb;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 5rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body class="font-sans antialiased text-gray-800 bg-white">
-    <!-- Navigation -->
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
     <div id="navbar-placeholder"></div>
 
-    <!-- Main Content -->
     <main class="pt-24 pb-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h1 class="text-4xl font-bold text-gray-900 mb-4">Tentang Saya</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Perjalanan profesional dan filosofi kerja saya</p>
+        <div id="about-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="loader-container">
+                <div class="loader"></div>
+                <p class="text-center text-gray-500">Memuat profil...</p>
             </div>
-
-            <div class="flex flex-col lg:flex-row gap-12 mb-16">
-                <div class="lg:w-1/3">
-                    <div class="bg-white p-8 rounded-xl shadow-md sticky top-28">
-                        <img class="w-full h-auto rounded-lg mb-6" src="https://media.licdn.com/dms/image/v2/D5603AQFlmiNjBSgsWA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718266634668?e=1762992000&v=beta&t=UF-tq8sWLIH9dNEs-JauHFqTr-9-KKC6DRJ3SSYnRJE" alt="Misbakhul Mustofin">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Misbakhul Mustofin</h3>
-                        <p class="text-gray-600 mb-4">Agile Project Manager | Educator | Trainer</p>
-                        <div class="space-y-3">
-                            <div class="flex items-center">
-                                <i data-feather="map-pin" class="text-primary mr-2 w-5 h-5"></i>
-                                <span class="text-gray-700">Malang, Indonesia</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i data-feather="briefcase" class="text-primary mr-2 w-5 h-5"></i>
-                                <span class="text-gray-700">Shipper, SMA Islam Almaarif</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i data-feather="award" class="text-primary mr-2 w-5 h-5"></i>
-                                <span class="text-gray-700">Certified Agile Practitioner</span>
-                            </div>
-                        </div>
-                        <div class="mt-6 pt-6 border-t border-gray-200">
-                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Keahlian</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Manajemen Proyek</span>
-                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Agile Methodology</span>
-                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Spreadsheet Automation</span>
-                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Pelatihan & Edukasi</span>
-                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Digital Transformation</span>
-                                <span class="px-3 py-1 bg-blue-50 text-primary text-sm rounded-full">Komunikasi</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-2/3">
-                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Profil Profesional</h2>
-                        <p class="text-gray-700 mb-4">Saya adalah seorang praktisi Agile dan manajer proyek dengan fokus pada pengembangan solusi logistik berbasis teknologi di Shipper. Selain itu, saya juga aktif sebagai pendidik di SMA Islam Almaarif, mengajarkan keterampilan digital dan manajemen proyek kepada pelajar.</p>
-                        <p class="text-gray-700 mb-4">Sebagai trainer, saya telah membantu berbagai tim dan organisasi dalam mengadopsi metodologi Agile serta mengimplementasikan otomatisasi menggunakan spreadsheet untuk meningkatkan efisiensi operasional.</p>
-                        <p class="text-gray-700">Pendekatan saya dalam bekerja selalu berpusat pada kolaborasi, pembelajaran berkelanjutan, dan penciptaan nilai nyata bagi semua pemangku kepentingan.</p>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Riwayat Profesional</h2>
-                        <div class="relative pl-12 timeline">
-                            <div class="relative mb-8 timeline-item">
-                                <h3 class="text-xl font-semibold text-gray-900">Agile Project Manager</h3>
-                                <div class="flex items-center text-gray-600 mb-2">
-                                    <span>Shipper</span>
-                                    <span class="mx-2">•</span>
-                                    <span>2021 - Sekarang</span>
-                                </div>
-                                <p class="text-gray-700">Memimpin implementasi metodologi Agile dalam pengembangan produk digital logistik, termasuk pelatihan tim dan perbaikan proses secara berkelanjutan.</p>
-                            </div>
-                            <div class="relative mb-8 timeline-item">
-                                <h3 class="text-xl font-semibold text-gray-900">Guru & Pelatih Teknologi</h3>
-                                <div class="flex items-center text-gray-600 mb-2">
-                                    <span>SMA Islam Almaarif</span>
-                                    <span class="mx-2">•</span>
-                                    <span>2019 - Sekarang</span>
-                                </div>
-                                <p class="text-gray-700">Mengajar dan melatih siswa dalam keterampilan digital, pemrograman dasar, dan manajemen proyek sederhana.</p>
-                            </div>
-                            <div class="relative mb-8 timeline-item">
-                                <h3 class="text-xl font-semibold text-gray-900">Trainer Spreadsheet Automation</h3>
-                                <div class="flex items-center text-gray-600 mb-2">
-                                    <span>Freelance</span>
-                                    <span class="mx-2">•</span>
-                                    <span>2018 - Sekarang</span>
-                                </div>
-                                <p class="text-gray-700">Menyelenggarakan pelatihan dan konsultasi otomatisasi proses bisnis menggunakan Google Sheets dan Excel untuk berbagai perusahaan dan organisasi.</p>
-                            </div>
-                            <div class="relative timeline-item">
-                                <h3 class="text-xl font-semibold text-gray-900">Event Organizer</h3>
-                                <div class="flex items-center text-gray-600 mb-2">
-                                    <span>Komunitas Edukasi</span>
-                                    <span class="mx-2">•</span>
-                                    <span>2016 - Sekarang</span>
-                                </div>
-                                <p class="text-gray-700">Mengorganisir berbagai acara edukasi dan pelatihan untuk komunitas dan lembaga pendidikan.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-xl shadow-md">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Filosofi Kerja</h2>
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
-                                    <i data-feather="target" class="text-primary w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Fokus pada Nilai</h3>
-                                    <p class="text-gray-700">Saya percaya bahwa setiap upaya harus memberikan nilai nyata bagi pengguna akhir dan pemangku kepentingan.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
-                                    <i data-feather="refresh-cw" class="text-primary w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Pembelajaran Berkelanjutan</h3>
-                                    <p class="text-gray-700">Teknologi dan metodologi terus berkembang, dan saya berkomitmen untuk terus belajar dan beradaptasi.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="bg-primary bg-opacity-10 p-3 rounded-full flex-shrink-0 mr-4">
-                                    <i data-feather="users" class="text-primary w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Kolaborasi Tim</h3>
-                                    <p class="text-gray-700">Solusi terbaik muncul dari kolaborasi dan pertukaran ide antara anggota tim yang beragam.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
     </main>
 
-    <!-- Footer -->
     <div id="footer-placeholder"></div>
 
     <script src="scripts.js"></script>
 
     <script>
-        feather.replace();
+        document.addEventListener('DOMContentLoaded', () => {
+            const aboutContainer = document.getElementById('about-container');
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbzkyZkpZeovHTVZ1x8-AU7LaS0GBDGzXi64YoJdWgPZoxemcjiTTOOhPdu5l7mHX_z6pw/exec?page=about';
+            const CACHE_KEY = 'aboutDataCache';
+            const CACHE_DURATION_MS = 12 * 60 * 60 * 1000; // 12 Jam
+
+            function renderProfile(data) {
+                const { profile, experience, education, licenses, skills } = data;
+
+                const leftColumnHtml = `
+                    <div class="lg:w-1/3">
+                        <div class="bg-white p-8 rounded-xl shadow-md sticky top-28">
+                            <img class="w-full h-auto rounded-full border-4 border-white mx-auto mb-6" src="${profile.profile_picture_url}" alt="${profile.full_name}">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">${profile.full_name}</h3>
+                            <p class="text-gray-600 mb-4">${profile.headline}</p>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <i data-feather="map-pin" class="text-blue-600 mr-2 w-5 h-5"></i>
+                                    <span class="text-gray-700">${profile.location}</span>
+                                </div>
+                                ${licenses && licenses.length > 0 ? `<div class="flex items-center"><i data-feather="award" class="text-blue-600 mr-2 w-5 h-5"></i><span class="text-gray-700">${licenses[0].certification_name}</span></div>` : ''}
+                            </div>
+                            ${skills && skills.length > 0 ? `<div class="mt-6 pt-6 border-t border-gray-200"><h4 class="text-lg font-semibold text-gray-900 mb-3">Keahlian</h4><div class="flex flex-wrap gap-2">${skills.map(skill => `<span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">${skill.skill_name}</span>`).join('')}</div></div>` : ''}
+                        </div>
+                    </div>
+                `;
+
+                // --- BAGIAN KANAN DENGAN STRUKTUR HTML TIMELINE YANG DIPERBAIKI ---
+                const rightColumnHtml = `
+                    <div class="lg:w-2/3">
+                        <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Profil Profesional</h2>
+                            <div class="text-gray-700 space-y-4">${profile.summary.replace(/\n/g, '<br>')}</div>
+                        </div>
+
+                        ${experience && experience.length > 0 ? `
+                        <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Riwayat Profesional</h2>
+                            <div class="relative timeline">
+                                ${experience.map(exp => `
+                                    <div class="relative pl-16 pb-8">
+                                        <div class="timeline-logo-container">
+                                            ${exp.company_logo_url 
+                                                ? `<img class="w-full h-full object-contain rounded-full p-1" src="${exp.company_logo_url}" alt="${exp.company_name} logo">` 
+                                                : `<i data-feather="briefcase" class="w-5 h-5 text-gray-500"></i>`
+                                            }
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-semibold text-gray-900">${exp.job_title}</h3>
+                                            <div class="flex flex-wrap items-center text-gray-600 mb-2">
+                                                <span>${exp.company_name}</span><span class="mx-2">•</span><span>${exp.start_date} - ${exp.end_date}</span>
+                                            </div>
+                                            <p class="text-gray-700">${exp.description}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
+                        
+                        ${education && education.length > 0 ? `
+                        <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Pendidikan</h2>
+                            <div class="relative timeline">
+                                ${education.map(edu => `
+                                    <div class="relative pl-16 pb-8">
+                                        <div class="timeline-logo-container">
+                                            ${edu.institution_logo_url 
+                                                ? `<img class="w-full h-full object-contain rounded-full p-1" src="${edu.institution_logo_url}" alt="${edu.institution_name} logo">` 
+                                                : `<i data-feather="book-open" class="w-5 h-5 text-gray-500"></i>`
+                                            }
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-semibold text-gray-900">${edu.institution_name}</h3>
+                                            <div class="flex flex-wrap items-center text-gray-600 mb-2">
+                                                <span>${edu.degree || ''} ${edu.field_of_study}</span><span class="mx-2">•</span><span>${edu.start_year} - ${edu.end_year}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
+
+                        ${licenses && licenses.length > 0 ? `
+                        <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Lisensi & Sertifikasi</h2>
+                            <div class="space-y-6">
+                                ${licenses.map(lic => `
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 pt-1">
+                                            <i data-feather="award" class="w-8 h-8 text-blue-600"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h3 class="text-xl font-semibold text-gray-900">${lic.certification_name}</h3>
+                                            <p class="text-gray-700">${lic.issuing_organization}</p>
+                                            <p class="text-gray-500 text-sm mt-1">Diterbitkan: ${lic.issue_date}</p>
+                                            ${lic.credential_url ? `<a href="${lic.credential_url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm inline-flex items-center mt-2">Lihat Kredensial <i data-feather="external-link" class="w-3 h-3 ml-1"></i></a>` : ''}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
+                    </div>
+                `;
+                
+                aboutContainer.innerHTML = `
+                    <div class="text-center mb-16">
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">Tentang Saya</h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Perjalanan Karier Profesional dan Pengalaman Saya</p>
+                    </div>
+                    <div class="flex flex-col lg:flex-row gap-12 mb-16">
+                        ${leftColumnHtml}
+                        ${rightColumnHtml}
+                    </div>
+                `;
+
+                feather.replace();
+            }
+
+            function fetchFromAPI() {
+                console.log("Mengambil data profil dari API.");
+                fetch(apiUrl)
+                    .then(res => {
+                        if (!res.ok) throw new Error("Gagal mengambil data API");
+                        return res.json();
+                    })
+                    .then(response => {
+                        if (response.status === 'success') {
+                            renderProfile(response.data);
+                            localStorage.setItem(CACHE_KEY, JSON.stringify({
+                                data: response.data,
+                                timestamp: new Date().getTime()
+                            }));
+                        } else {
+                            throw new Error("Respon API tidak sukses.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        aboutContainer.innerHTML = '<p class="text-center text-red-500">Gagal memuat data profil. Silakan coba lagi nanti.</p>';
+                    });
+            }
+
+            try {
+                const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
+                if (cached && (new Date().getTime() - cached.timestamp < CACHE_DURATION_MS)) {
+                    console.log("Memuat data profil dari cache.");
+                    renderProfile(cached.data);
+                } else {
+                    fetchFromAPI();
+                }
+            } catch (e) {
+                fetchFromAPI();
+            }
+        });
     </script>
 </body>
 </html>
