@@ -128,7 +128,14 @@
             function renderContent(data) {
                 document.title = `${data.title} | Portofolio Mustofin`;
                 
-                const categoryColors = { /* ... (colors remain the same) ... */ };
+                const categoryColors = { 
+                    project: 'bg-blue-500',
+                    teaching: 'bg-green-500',
+                    speaking: 'bg-purple-500',
+                    event: 'bg-yellow-500',
+                    research: 'bg-red-500',
+                    apps: 'bg-indigo-500',
+                };
                 
                 const detailsHtml = [
                     (data.detail_1_value ? `<div class="flex items-center mb-4"><i data-feather="${data.detail_1_icon || 'info'}" class="mr-2 text-gray-500"></i><p class="text-gray-500"><span class="font-semibold">${data.detail_1_label}:</span> ${data.detail_1_value}</p></div>` : ''),
