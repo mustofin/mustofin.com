@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas & Materi | Misbakhul Mustofin</title>
+    <link rel="icon" type="image/x-icon" href="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* Menghilangkan scrollbar dari body utama agar hanya iframe yang bisa di-scroll */
+        body {
+            overflow-y: hidden;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-white">
+    <div id="navbar-placeholder"></div>
+
+    <main class="pt-16"> <iframe 
+        src="https://mustofin.myr.id" 
+        title="Kelas & Materi oleh Misbakhul Mustofin"
+        class="w-full h-screen"
+        style="border:0;"
+        allowfullscreen>
+
+    <!-- <main class="pt-16"> <iframe 
+            src="https://mustofin.myr.id/course" 
+            title="Kelas & Materi oleh Misbakhul Mustofin"
+            class="w-full h-screen"
+            style="border:0;"
+            allowfullscreen> -->
+            Memuat kelas dan materi...
+        </iframe>
+
+    </main>
+
+    <script src="scripts.js"></script>
+
+    <script>
+        // Inisialisasi ikon setelah konten halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            feather.replace();
+        });
+    </script>
+</body>
+</html>
