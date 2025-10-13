@@ -72,6 +72,48 @@
             const CACHE_KEY = 'aboutDataCache';
             const CACHE_DURATION_MS = 12 * 60 * 60 * 1000; // 12 Jam
 
+            function formatDescription(text) {
+                if (!text) return '';
+
+                // Langkah 1: Pastikan 'text' adalah sebuah String.
+                // Jika data yang diterima adalah Array (karena ada koma), gabungkan kembali.
+                if (Array.isArray(text)) {
+                    text = text.join(', ');
+                }
+
+                // Langkah 2: Lanjutkan logika seperti sebelumnya.
+                if (String(text).includes('\n- ')) {
+                    const lines = String(text).split('\n').filter(line => line.trim() !== '');
+                    let html = '';
+                    let inList = false;
+
+                    lines.forEach(line => {
+                        const trimmedLine = line.trim();
+                        if (trimmedLine.startsWith('- ')) {
+                            if (!inList) {
+                                html += '<ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">';
+                                inList = true;
+                            }
+                            html += `<li>${trimmedLine.substring(2).trim()}</li>`;
+                        } else {
+                            if (inList) {
+                                html += '</ul>';
+                                inList = false;
+                            }
+                            html += `<p class="text-gray-700 mt-2 font-semibold">${trimmedLine}</p>`;
+                        }
+                    });
+
+                    if (inList) {
+                        html += '</ul>';
+                    }
+                    return html;
+                }
+                
+                return `<p class="text-gray-700">${String(text).replace(/\n/g, '<br>')}</p>`;
+            }
+
+
             function renderProfile(data) {
                 const { profile, experience, education, licenses, skills } = data;
 
@@ -118,7 +160,7 @@
                                             <div class="flex flex-wrap items-center text-gray-600 mb-2">
                                                 <span>${exp.company_name}</span><span class="mx-2">•</span><span>${exp.start_date} - ${exp.end_date}</span>
                                             </div>
-                                            <p class="text-gray-700">${exp.description}</p>
+                                            ${formatDescription(exp.description)}
                                         </div>
                                     </div>
                                 `).join('')}
