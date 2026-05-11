@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,264 +9,239 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb', // blue-600
+                        secondary: '#1e40af', // blue-800
+                        accent: '#f59e0b' // amber-500
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-        /* -- CSS TIMELINE YANG DIPERBAIKI -- */
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 20px; /* Posisi garis, tepat di tengah logo 40px */
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #e5e7eb; /* gray-200 */
-            z-index: 1;
+        .dot-pattern {
+            background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+            background-size: 20px 20px;
         }
-        .timeline-logo-container {
-            position: absolute;
-            top: 0;
-            left: 0; /* Rata kiri dengan padding item */
-            width: 42px; /* Sedikit lebih besar untuk border */
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 9999px;
-            background-color: white;
-            border: 2px solid #e5e7eb; /* gray-200 */
-            z-index: 2; /* Di atas garis timeline */
-        }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #2563eb;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 5rem auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        .organic-shape {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
         }
     </style>
 </head>
-<body class="font-sans antialiased text-gray-800 bg-gray-50">
+
+<body class="font-sans antialiased text-gray-800 bg-white">
     <div id="navbar-placeholder"></div>
 
-    <main class="pt-24 pb-16">
-        <div id="about-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="loader-container">
-                <div class="loader"></div>
-                <p class="text-center text-gray-500">Memuat profil...</p>
+    <main class="pt-24 pb-20">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <!-- Left Content -->
+                <div class="w-full lg:w-3/5">
+                    <p class="text-primary font-bold text-sm tracking-wider uppercase mb-4">Tentang Saya</p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Membangun Sistem Sederhana yang Memberi Dampak Nyata
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-10 leading-relaxed max-w-2xl">
+                        Saya membantu bisnis &amp; institusi pendidikan membuat sistem digital yang efisien, mudah
+                        digunakan, dan siap tumbuh.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                        <div class="flex items-center bg-white border border-gray-100 shadow-sm rounded-xl p-4 flex-1">
+                            <div class="bg-blue-50 p-3 rounded-lg mr-4">
+                                <i data-feather="shield" class="text-primary w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-sm md:text-base">Agile Practitioner</h3>
+                                <p class="text-xs text-gray-500 mt-1">Scrum • Kanban • Lean</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white border border-gray-100 shadow-sm rounded-xl p-4 flex-1">
+                            <div class="bg-blue-50 p-3 rounded-lg mr-4">
+                                <i data-feather="monitor" class="text-primary w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-sm md:text-base">Systems Builder</h3>
+                                <p class="text-xs text-gray-500 mt-1">Automation • Integration • Web</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Image -->
+                <div class="w-full lg:w-2/5 relative mt-12 lg:mt-0 flex justify-center">
+                    <div class="absolute -top-6 -right-6 w-32 h-32 dot-pattern opacity-40 z-0"></div>
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 dot-pattern opacity-40 z-0"></div>
+                    <div class="relative z-10 mx-auto w-full max-w-[350px]">
+                        <img src="https://mustofin.com/img/mustofincircle.png" alt="Mustofin"
+                            class="w-full h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Pendekatan Saya Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Pendekatan Saya</h2>
+                <p class="text-lg text-gray-600">
+                    Saya percaya solusi terbaik bukan yang paling kompleks, tapi yang paling relevan, sederhana, dan
+                    berkelanjutan.
+                </p>
             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i data-feather="check-circle" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Sederhana &amp; Efisien</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Fokus pada solusi yang ringan, mudah dipahami, dan
+                        menghemat waktu.</p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i data-feather="bar-chart-2" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Berdampak Nyata</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Setiap sistem dibangun untuk menyelesaikan masalah
+                        operasional yang konkret.</p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i data-feather="settings" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mudah Dirawat</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Menggunakan teknologi yang mudah dipelihara dan
+                        dikembangkan.</p>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+                        <i data-feather="users" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Kolaboratif</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Bekerja dekat dengan tim agar sistem sesuai
+                        kebutuhan dan mudah diadopsi.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latar Belakang & Quote Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+            <div class="flex flex-col lg:flex-row gap-16">
+                <!-- Left: Latar Belakang -->
+                <div class="w-full lg:w-3/5">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-10">Latar Belakang</h2>
+
+                    <div class="relative border-l-2 border-blue-100 ml-3 md:ml-4 space-y-10">
+                        <!-- Item 1 -->
+                        <div class="relative pl-8 md:pl-10">
+                            <div
+                                class="absolute w-4 h-4 bg-primary rounded-full -left-[9px] top-1 border-4 border-white shadow-sm">
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Technical Program Manager</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Berpengalaman memimpin program,
+                                sinkronisasi lintas tim, dan memastikan eksekusi berjalan efektif.</p>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="relative pl-8 md:pl-10">
+                            <div
+                                class="absolute w-4 h-4 bg-primary rounded-full -left-[9px] top-1 border-4 border-white shadow-sm">
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Agile &amp; Operational Systems</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Menerapkan framework Agile untuk
+                                meningkatkan kolaborasi, transparansi, dan delivery value.</p>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="relative pl-8 md:pl-10">
+                            <div
+                                class="absolute w-4 h-4 bg-primary rounded-full -left-[9px] top-1 border-4 border-white shadow-sm">
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Digital Systems &amp; Automation</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Membangun solusi digital menggunakan Google
+                                Workspace, Apps Script, dan web untuk mengotomatisasi proses kerja.</p>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="relative pl-8 md:pl-10">
+                            <div
+                                class="absolute w-4 h-4 bg-primary rounded-full -left-[9px] top-1 border-4 border-white shadow-sm">
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Education &amp; Community</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Berbagi pengetahuan melalui pelatihan,
+                                mentoring, dan komunitas untuk mendorong literasi digital.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Quote -->
+                <div class="w-full lg:w-2/5">
+                    <div class="bg-blue-50 p-10 md:p-12 rounded-3xl h-full flex flex-col justify-center relative">
+                        <div class="text-primary mb-6">
+                            <!-- Custom Quote Icon -->
+                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.6667 32C5.22335 32 0 26.7766 0 20.3333C0 13.89 5.22335 8.66667 11.6667 8.66667V15.3333C8.90525 15.3333 6.66667 17.5719 6.66667 20.3333C6.66667 23.0948 8.90525 25.3333 11.6667 25.3333C14.4281 25.3333 16.6667 23.0948 16.6667 20.3333C16.6667 11.132 9.20135 3.66667 0 3.66667V0C11.2305 0 20.3333 9.10283 20.3333 20.3333C20.3333 26.7766 15.11 32 8.66667 32H11.6667ZM31.3333 32C24.89 32 19.6667 26.7766 19.6667 20.3333C19.6667 13.89 24.89 8.66667 31.3333 8.66667V15.3333C28.5719 15.3333 26.3333 17.5719 26.3333 20.3333C26.3333 23.0948 28.5719 25.3333 31.3333 25.3333C34.0948 25.3333 36.3333 23.0948 36.3333 20.3333C36.3333 11.132 28.868 3.66667 19.6667 3.66667V0C30.8972 0 40 9.10283 40 20.3333C40 26.7766 34.7766 32 28.3333 32H31.3333Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </div>
+                        <p class="text-xl md:text-2xl font-bold text-gray-900 leading-relaxed mb-8">
+                            Teknologi bukan tujuan, tapi alat untuk membuat pekerjaan lebih bermakna dan organisasi
+                            lebih efisien.
+                        </p>
+                        <p class="text-gray-600 font-semibold">— Mustofin</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="bg-blue-50 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-blue-100">
+                <div class="md:w-2/3">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">Tertarik bekerja sama?</h2>
+                    <p class="text-gray-600 text-lg">
+                        Mari diskusikan bagaimana saya dapat membantu menyelesaikan tantangan operasional Anda dengan
+                        solusi digital yang tepat.
+                    </p>
+                </div>
+                <div class="md:w-1/3 text-left md:text-right">
+                    <a href="contact.html"
+                        class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-secondary transition duration-300 shadow-md">
+                        Hubungi Saya
+                        <i data-feather="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="scripts.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const aboutContainer = document.getElementById('about-container');
-            const apiUrl = 'https://script.google.com/macros/s/AKfycbxKeOYr_LLZ82hEBkcqQUtQNLGmryKm88pilFHjm4erStFEg877LfIYmMnfRXlhjyWsKg/exec?page=about';
-            const CACHE_KEY = 'aboutDataCache';
-            const CACHE_DURATION_MS = 12 * 60 * 60 * 1000; // 12 Jam
-
-            function formatDescription(text) {
-                if (!text) return '';
-
-                // Langkah 1: Pastikan 'text' adalah sebuah String.
-                // Jika data yang diterima adalah Array (karena ada koma), gabungkan kembali.
-                if (Array.isArray(text)) {
-                    text = text.join(', ');
-                }
-
-                // Langkah 2: Lanjutkan logika seperti sebelumnya.
-                if (String(text).includes('\n- ')) {
-                    const lines = String(text).split('\n').filter(line => line.trim() !== '');
-                    let html = '';
-                    let inList = false;
-
-                    lines.forEach(line => {
-                        const trimmedLine = line.trim();
-                        if (trimmedLine.startsWith('- ')) {
-                            if (!inList) {
-                                html += '<ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">';
-                                inList = true;
-                            }
-                            html += `<li>${trimmedLine.substring(2).trim()}</li>`;
-                        } else {
-                            if (inList) {
-                                html += '</ul>';
-                                inList = false;
-                            }
-                            html += `<p class="text-gray-700 mt-2 font-semibold">${trimmedLine}</p>`;
-                        }
-                    });
-
-                    if (inList) {
-                        html += '</ul>';
-                    }
-                    return html;
-                }
-                
-                return `<p class="text-gray-700">${String(text).replace(/\n/g, '<br>')}</p>`;
-            }
-
-
-            function renderProfile(data) {
-                const { profile, experience, education, licenses, skills } = data;
-
-                const leftColumnHtml = `
-                    <div class="lg:w-1/3">
-                        <div class="bg-white p-8 rounded-xl shadow-md sticky top-28">
-                            <img class="w-full h-auto rounded-full border-4 border-white mx-auto mb-6" src="${profile.profile_picture_url}" alt="${profile.full_name}">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">${profile.full_name}</h3>
-                            <p class="text-gray-600 mb-4">${profile.headline}</p>
-                            <div class="space-y-3">
-                                <div class="flex items-center">
-                                    <i data-feather="map-pin" class="text-blue-600 mr-2 w-5 h-5"></i>
-                                    <span class="text-gray-700">${profile.location}</span>
-                                </div>
-                                ${licenses && licenses.length > 0 ? `<div class="flex items-center"><i data-feather="award" class="text-blue-600 mr-2 w-5 h-5"></i><span class="text-gray-700">${licenses[0].certification_name}</span></div>` : ''}
-                            </div>
-                            ${skills && skills.length > 0 ? `<div class="mt-6 pt-6 border-t border-gray-200"><h4 class="text-lg font-semibold text-gray-900 mb-3">Keahlian</h4><div class="flex flex-wrap gap-2">${skills.map(skill => `<span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">${skill.skill_name}</span>`).join('')}</div></div>` : ''}
-                        </div>
-                    </div>
-                `;
-
-                // --- BAGIAN KANAN DENGAN STRUKTUR HTML TIMELINE YANG DIPERBAIKI ---
-                const rightColumnHtml = `
-                    <div class="lg:w-2/3">
-                        <div class="bg-white p-8 rounded-xl shadow-md mb-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Profil Profesional</h2>
-                            <div class="text-gray-700 space-y-4">${profile.summary.replace(/\n/g, '<br>')}</div>
-                        </div>
-
-                        ${experience && experience.length > 0 ? `
-                        <div class="bg-white p-8 rounded-xl shadow-md mb-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Riwayat Profesional</h2>
-                            <div class="relative timeline">
-                                ${experience.map(exp => `
-                                    <div class="relative pl-16 pb-8">
-                                        <div class="timeline-logo-container">
-                                            ${exp.company_logo_url 
-                                                ? `<img class="w-full h-full object-contain rounded-full p-1" src="${exp.company_logo_url}" alt="${exp.company_name} logo">` 
-                                                : `<i data-feather="briefcase" class="w-5 h-5 text-gray-500"></i>`
-                                            }
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-gray-900">${exp.job_title}</h3>
-                                            <div class="flex flex-wrap items-center text-gray-600 mb-2">
-                                                <span>${exp.company_name}</span><span class="mx-2">•</span><span>${exp.start_date} - ${exp.end_date}</span>
-                                            </div>
-                                            ${formatDescription(exp.description)}
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                        ` : ''}
-                        
-                        ${education && education.length > 0 ? `
-                        <div class="bg-white p-8 rounded-xl shadow-md mb-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Pendidikan</h2>
-                            <div class="relative timeline">
-                                ${education.map(edu => `
-                                    <div class="relative pl-16 pb-8">
-                                        <div class="timeline-logo-container">
-                                            ${edu.institution_logo_url 
-                                                ? `<img class="w-full h-full object-contain rounded-full p-1" src="${edu.institution_logo_url}" alt="${edu.institution_name} logo">` 
-                                                : `<i data-feather="book-open" class="w-5 h-5 text-gray-500"></i>`
-                                            }
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-gray-900">${edu.institution_name}</h3>
-                                            <div class="flex flex-wrap items-center text-gray-600 mb-2">
-                                                <span>${edu.degree || ''} ${edu.field_of_study}</span><span class="mx-2">•</span><span>${edu.start_year} - ${edu.end_year}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                        ` : ''}
-
-                        ${licenses && licenses.length > 0 ? `
-                        <div class="bg-white p-8 rounded-xl shadow-md mb-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Lisensi & Sertifikasi</h2>
-                            <div class="space-y-6">
-                                ${licenses.map(lic => `
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 pt-1">
-                                            <i data-feather="award" class="w-8 h-8 text-blue-600"></i>
-                                        </div>
-                                        <div class="ml-4">
-                                            <h3 class="text-xl font-semibold text-gray-900">${lic.certification_name}</h3>
-                                            <p class="text-gray-700">${lic.issuing_organization}</p>
-                                            <p class="text-gray-500 text-sm mt-1">Diterbitkan: ${lic.issue_date}</p>
-                                            ${lic.credential_url ? `<a href="${lic.credential_url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm inline-flex items-center mt-2">Lihat Kredensial <i data-feather="external-link" class="w-3 h-3 ml-1"></i></a>` : ''}
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                        ` : ''}
-                    </div>
-                `;
-                
-                aboutContainer.innerHTML = `
-                    <div class="text-center mb-16">
-                        <h1 class="text-4xl font-bold text-gray-900 mb-4">Tentang Saya</h1>
-                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Perjalanan Karier Profesional dan Pengalaman Saya</p>
-                    </div>
-                    <div class="flex flex-col lg:flex-row gap-12 mb-16">
-                        ${leftColumnHtml}
-                        ${rightColumnHtml}
-                    </div>
-                `;
-
-                feather.replace();
-            }
-
-            function fetchFromAPI() {
-                console.log("Mengambil data profil dari API.");
-                fetch(apiUrl)
-                    .then(res => {
-                        if (!res.ok) throw new Error("Gagal mengambil data API");
-                        return res.json();
-                    })
-                    .then(response => {
-                        if (response.status === 'success') {
-                            renderProfile(response.data);
-                            localStorage.setItem(CACHE_KEY, JSON.stringify({
-                                data: response.data,
-                                timestamp: new Date().getTime()
-                            }));
-                        } else {
-                            throw new Error("Respon API tidak sukses.");
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error:", error);
-                        aboutContainer.innerHTML = '<p class="text-center text-red-500">Gagal memuat data profil. Silakan coba lagi nanti.</p>';
-                    });
-            }
-
-            try {
-                const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
-                if (cached && (new Date().getTime() - cached.timestamp < CACHE_DURATION_MS)) {
-                    console.log("Memuat data profil dari cache.");
-                    renderProfile(cached.data);
-                } else {
-                    fetchFromAPI();
-                }
-            } catch (e) {
-                fetchFromAPI();
-            }
+            feather.replace();
         });
     </script>
 </body>
+
 </html>
