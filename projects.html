@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Misbakhul Mustofin</title>
+    <link rel="icon" type="image/x-icon" href="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        button.active {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        button.active:hover {
+            background-color: #2563eb;
+        }
+
+        .portfolio-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay {
+            background: rgba(37, 99, 235, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2563eb;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800 bg-white">
+    <div id="navbar-placeholder"></div>
+
+    <main class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Proyek yang Telah Saya Kerjakan</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Beberapa solusi digital yang telah membantu bisnis
+                    dan institusi pendidikan bekerja lebih efisien</p>
+            </div>
+
+            <div class="flex justify-center mb-12">
+                <div id="portfolio-filter-container" class="inline-flex rounded-md shadow-sm flex-wrap justify-center">
+                </div>
+            </div>
+
+            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const grid = document.getElementById('portfolio-grid');
+            const filterContainer = document.getElementById('portfolio-filter-container');
+
+            // List of project files
+            const projectFiles = [
+                'absensi-gurustaf-mtsalmaarif1singosari.md',
+                'sistem-historis-customer-approval-estimasi-bengkel-mobil-malang.md',
+                'web-profile-degree-solution.md'
+            ];
+
+            let fullPortfolioData = [];
+
+            // Function to parse markdown frontmatter
+            function parseMD(md) {
+                const match = md.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+                if (!match) return { attributes: {}, body: md };
+                try {
+                    const attributes = jsyaml.load(match[1]);
+                    return { attributes, body: match[2] };
+                } catch (e) {
+                    console.error("Error parsing YAML:", e);
+                    return { attributes: {}, body: match[2] };
+                }
+            }
+
+            async function loadProjects() {
+                grid.innerHTML = `<div class="loader-container col-span-3"><div class="loader"></div><p class="text-center text-gray-500">Memuat portofolio...</p></div>`;
+
+                try {
+                    const fetchPromises = projectFiles.map(file =>
+                        fetch(`projects/${file}`).then(res => {
+                            if (!res.ok) throw new Error(`Failed to load ${file}`);
+                            return res.text();
+                        })
+                    );
+
+                    const mdContents = await Promise.all(fetchPromises);
+                    fullPortfolioData = mdContents.map((md, index) => {
+                        const parsed = parseMD(md);
+                        return {
+                            ...parsed.attributes,
+                            body: parsed.body,
+                            fileId: projectFiles[index]
+                        };
+                    });
+
+                    renderCards(fullPortfolioData);
+                    generateAndSetupFilters(fullPortfolioData);
+                    if (typeof feather !== 'undefined') feather.replace();
+                } catch (error) {
+                    console.error('Error fetching portfolio data:', error);
+                    grid.innerHTML = '<p class="col-span-3 text-center text-red-500">Gagal memuat data. Silakan coba muat ulang halaman.</p>';
+                    filterContainer.style.display = 'none';
+                }
+            }
+
+            function renderCards(data) {
+                grid.innerHTML = '';
+                data.forEach(item => {
+                    const categoryColor = item.category_color ? item.category_color.replace('text-', 'bg-').replace('-500', '-500').replace('-600', '-600') : 'bg-gray-500';
+                    const cardHtml = `
+                        <div class="portfolio-item rounded-xl overflow-hidden shadow-md" data-category="${item.category}" data-id="${item.id}">
+                            <div class="h-48 overflow-hidden">
+                                <img class="w-full h-full object-cover" src="${item.hero_image}" alt="${item.title}">
+                            </div>
+                            <div class="p-6">
+                                <span class="inline-block px-2 py-1 text-xs font-semibold text-white rounded-full mb-2 ${categoryColor}">
+                                    ${item.category}
+                                </span>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">${item.title}</h3>
+                                <p class="text-gray-600 mb-4">${item.description}</p>
+                                <span class="text-blue-600 font-medium inline-flex items-center">
+                                    Lihat Detail <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                    grid.insertAdjacentHTML('beforeend', cardHtml);
+                });
+
+                document.querySelectorAll('.portfolio-item').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const itemId = card.dataset.id;
+                        window.location.href = `project-detail.html?id=${itemId}`;
+                    });
+                });
+            }
+
+            function generateAndSetupFilters(data) {
+                const categories = new Map([['all', 'Semua']]);
+                data.forEach(item => {
+                    if (item.category && !categories.has(item.category)) {
+                        categories.set(item.category, item.category);
+                    }
+                });
+
+                let buttonsHtml = '';
+                const categoryArray = Array.from(categories.entries());
+
+                categoryArray.forEach(([type, label], index) => {
+                    const isFirst = index === 0;
+                    const isLast = index === categoryArray.length - 1;
+                    let buttonClasses = "px-4 py-2 text-sm font-medium border-t border-b border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none";
+                    if (isFirst) buttonClasses += " rounded-l-lg border-l";
+                    if (isLast) buttonClasses += " rounded-r-lg border-r";
+                    buttonsHtml += `<button type="button" class="${buttonClasses}" data-filter="${type}">${label}</button>`;
+                });
+
+                filterContainer.innerHTML = buttonsHtml;
+
+                const filterButtons = filterContainer.querySelectorAll('button');
+                filterContainer.querySelector('button[data-filter="all"]').classList.add('active');
+
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function (event) {
+                        event.stopPropagation();
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        const filter = this.getAttribute('data-filter');
+                        document.querySelectorAll('.portfolio-item').forEach(item => {
+                            item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
+                        });
+                    });
+                });
+            }
+
+            loadProjects();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,12 +15,15 @@
             border-color: #2563eb;
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
+
         .button-loading {
             cursor: not-allowed;
-            background-color: #93c5fd; /* blue-300 */
+            background-color: #93c5fd;
+            /* blue-300 */
         }
     </style>
 </head>
+
 <body class="font-sans antialiased text-gray-800 bg-white">
     <div id="navbar-placeholder"></div>
 
@@ -27,7 +31,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h1 class="text-4xl font-bold text-gray-900 mb-4">Hubungi Saya</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Mari berdiskusi tentang kolaborasi, pertanyaan, atau kesempatan lainnya</p>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Mari berdiskusi tentang kolaborasi, pertanyaan, atau
+                    kesempatan lainnya</p>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-12">
@@ -36,17 +41,28 @@
                         <h2 class="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h2>
                         <form id="contactForm" class="space-y-6">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                                <input type="text" id="name" name="name" class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama
+                                    Lengkap</label>
+                                <input type="text" id="name" name="name"
+                                    class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required>
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
-                                <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat
+                                    Email</label>
+                                <input type="email" id="email" name="email"
+                                    class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required>
                             </div>
                             <div>
                                 <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subjek</label>
-                                <select id="subject" name="subject" class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    <option value="Kolaborasi Proyek">Kolaborasi Proyek</option>
+                                <select id="subject" name="subject"
+                                    class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="Digitalisasi Sekolah/Universitas">Digitalisasi Sekolah/Universitas
+                                    </option>
+                                    <option value="Otomatisasi Operasional Bisnis">Otomatisasi Operasional Bisnis
+                                    </option>
+                                    <option value="Pembuatan Web Profile">Pembuatan Web Profile</option>
                                     <option value="Permintaan Pelatihan">Permintaan Pelatihan</option>
                                     <option value="Undangan sebagai Pembicara">Undangan sebagai Pembicara</option>
                                     <option value="Lainnya">Lainnya</option>
@@ -54,11 +70,14 @@
                             </div>
                             <div>
                                 <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Pesan</label>
-                                <textarea id="message" name="message" rows="5" class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                                <textarea id="message" name="message" rows="5"
+                                    class="form-input w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required></textarea>
                             </div>
                             <div id="form-notification" class="text-sm font-medium"></div>
                             <div>
-                                <button type="submit" id="submit-button" class="w-full flex justify-center items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                                <button type="submit" id="submit-button"
+                                    class="w-full flex justify-center items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
                                     <span id="button-text">Kirim Pesan</span>
                                     <i data-feather="send" class="ml-2 inline w-4 h-4"></i>
                                 </button>
@@ -71,16 +90,31 @@
                         <h2 class="text-2xl font-bold text-gray-900 mb-6">Informasi Kontak</h2>
                         <div class="space-y-6">
                             <div class="flex items-start">
-                                <div class="bg-blue-100 p-3 rounded-full flex-shrink-0 mr-4"><i data-feather="mail" class="text-blue-600 w-5 h-5"></i></div>
-                                <div><h3 class="text-lg font-semibold text-gray-900 mb-1">Email</h3><a href="mailto:mustofin.work@gmail.com" class="text-gray-700 hover:text-blue-600">mustofin.work@gmail.com</a></div>
+                                <div class="bg-blue-100 p-3 rounded-full flex-shrink-0 mr-4"><i data-feather="mail"
+                                        class="text-blue-600 w-5 h-5"></i></div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Email</h3><a
+                                        href="mailto:mustofin.work@gmail.com"
+                                        class="text-gray-700 hover:text-blue-600">mustofin.work@gmail.com</a>
+                                </div>
                             </div>
                             <div class="flex items-start">
-                                <div class="bg-blue-100 p-3 rounded-full flex-shrink-0 mr-4"><i data-feather="linkedin" class="text-blue-600 w-5 h-5"></i></div>
-                                <div><h3 class="text-lg font-semibold text-gray-900 mb-1">LinkedIn</h3><a href="https://linkedin.com/in/mustofin" target="_blank" class="text-gray-700 hover:text-blue-600">linkedin.com/in/mustofin</a></div>
+                                <div class="bg-blue-100 p-3 rounded-full flex-shrink-0 mr-4"><i data-feather="linkedin"
+                                        class="text-blue-600 w-5 h-5"></i></div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">LinkedIn</h3><a
+                                        href="https://linkedin.com/in/mustofin" target="_blank"
+                                        class="text-gray-700 hover:text-blue-600">linkedin.com/in/mustofin</a>
+                                </div>
                             </div>
                             <div class="flex items-start">
-                                <div class="bg-blue-100 p-3 rounded-full flex-shrink-0 mr-4"><i data-feather="instagram" class="text-blue-600 w-5 h-5"></i></div>
-                                <div><h3 class="text-lg font-semibold text-gray-900 mb-1">Instagram</h3><a href="https://instagram.com/tofiniu" target="_blank" class="text-gray-700 hover:text-blue-600">@tofiniu</a></div>
+                                <div class="bg-blue-100 p-3 rounded-full flex-shrink-0 mr-4"><i data-feather="instagram"
+                                        class="text-blue-600 w-5 h-5"></i></div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Instagram</h3><a
+                                        href="https://instagram.com/tofiniu" target="_blank"
+                                        class="text-gray-700 hover:text-blue-600">@tofiniu</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -100,9 +134,9 @@
             const buttonText = document.getElementById('button-text');
             const notification = document.getElementById('form-notification');
             // Ganti URL ini dengan URL Apps Script Anda
-            const apiUrl = 'https://script.google.com/macros/s/AKfycbxKeOYr_LLZ82hEBkcqQUtQNLGmryKm88pilFHjm4erStFEg877LfIYmMnfRXlhjyWsKg/exec'; 
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbxKeOYr_LLZ82hEBkcqQUtQNLGmryKm88pilFHjm4erStFEg877LfIYmMnfRXlhjyWsKg/exec';
 
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
 
                 buttonText.textContent = 'Mengirim...';
@@ -116,7 +150,7 @@
                     subject: document.getElementById('subject').value,
                     message: document.getElementById('message').value,
                 };
-                
+
                 fetch(apiUrl, {
                     method: 'POST',
                     mode: 'no-cors', // Penting untuk Apps Script Web Apps
@@ -125,23 +159,24 @@
                     body: JSON.stringify(formData),
                     redirect: 'follow'
                 })
-                .then(() => {
-                    notification.textContent = 'Terima kasih! Pesan Anda telah berhasil dikirim.';
-                    notification.className = 'text-green-600';
-                    form.reset();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    notification.textContent = 'Maaf, terjadi kesalahan saat mengirim pesan. Coba lagi nanti.';
-                    notification.className = 'text-red-600';
-                })
-                .finally(() => {
-                    buttonText.textContent = 'Kirim Pesan';
-                    submitButton.classList.remove('button-loading');
-                    submitButton.disabled = false;
-                });
+                    .then(() => {
+                        notification.textContent = 'Terima kasih! Pesan Anda telah berhasil dikirim.';
+                        notification.className = 'text-green-600';
+                        form.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        notification.textContent = 'Maaf, terjadi kesalahan saat mengirim pesan. Coba lagi nanti.';
+                        notification.className = 'text-red-600';
+                    })
+                    .finally(() => {
+                        buttonText.textContent = 'Kirim Pesan';
+                        submitButton.classList.remove('button-loading');
+                        submitButton.disabled = false;
+                    });
             });
         });
     </script>
 </body>
+
 </html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Portofolio | Misbakhul Mustofin</title>
+    <link rel="icon" type="image/x-icon" href="https://media.mayar.id/images/0702dec7-5a60-4897-a6ec-69396fde8bc1.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2563eb;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 5rem auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800 bg-white">
+    <div id="navbar-placeholder"></div>
+
+    <main class="pt-24 pb-16">
+        <div id="project-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="loader"></div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const contentContainer = document.getElementById('project-content');
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+
+            if (!id) {
+                contentContainer.innerHTML = '<p class="text-center text-red-500">ID Portofolio tidak ditemukan.</p>';
+                return;
+            }
+
+            function parseMD(md) {
+                const match = md.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+                if (!match) return { attributes: {}, body: md };
+                try {
+                    const attributes = jsyaml.load(match[1]);
+                    return { attributes, body: match[2] };
+                } catch (e) {
+                    console.error("Error parsing YAML:", e);
+                    return { attributes: {}, body: match[2] };
+                }
+            }
+
+            try {
+                const res = await fetch(`projects/${id}.md`);
+                if (!res.ok) throw new Error('File not found');
+                const mdText = await res.text();
+                const data = parseMD(mdText);
+                renderContent(data.attributes, data.body);
+            } catch (error) {
+                console.error('Error fetching detail data:', error);
+                contentContainer.innerHTML = `<p class="text-center text-red-500">Gagal memuat detail portofolio. ${error.message}</p>`;
+            }
+
+            function renderContent(attr, body) {
+                document.title = `${attr.title} | Portofolio Mustofin`;
+
+                const categoryColor = attr.category_color || 'text-blue-500';
+
+                // tags
+                const tagsHtml = (attr.tags || []).map(t =>
+                    `<span class="bg-gray-100 text-gray-700 text-sm font-medium px-4 py-1.5 rounded-full border border-gray-200">${t}</span>`
+                ).join('');
+
+                // Info (simple horizontal strip)
+                const info = attr.info || {};
+                const infoMap = [
+                    { icon: 'users', label: 'Klien', val: info.klien },
+                    { icon: 'calendar', label: 'Tahun', val: info.tahun },
+                ];
+                const infoHtml = infoMap.filter(i => i.val).map(i => `
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+                            <i data-feather="${i.icon}" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">${i.label}</p>
+                            <p class="text-sm font-semibold text-gray-800">${i.val}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Masalah list (bullet dots)
+                const masalahList = (attr.masalah || []).map(m => `
+                    <li class="flex items-start space-x-2">
+                        <span class="mt-2 flex-shrink-0 w-2 h-2 rounded-full bg-blue-600"></span>
+                        <span>${m}</span>
+                    </li>
+                `).join('');
+
+                // Solusi list (bullet dots)
+                const solusiList = (attr.solusi || []).map(s => `
+                    <li class="flex items-start space-x-2">
+                        <span class="mt-2 flex-shrink-0 w-2 h-2 rounded-full bg-blue-600"></span>
+                        <span>${s}</span>
+                    </li>
+                `).join('');
+
+                // Fitur Utama list
+                const fiturList = (attr.fitur || []).map(f => `
+                    <div class="flex items-start space-x-3 text-gray-600">
+                        <div class="mt-1 flex-shrink-0 w-5 h-5 text-blue-600">
+                            <i data-feather="check-circle" class="w-5 h-5"></i>
+                        </div>
+                        <span>${f}</span>
+                    </div>
+                `).join('');
+
+                // Teknologi yang Digunakan (as badges)
+                const teknologiArray = info.teknologi ? info.teknologi.split(',').map(t => t.trim()) : [];
+                const teknologiHtml = teknologiArray.map(t => `
+                    <div class="bg-white border border-gray-100 shadow-sm rounded-xl p-4 flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                            <i data-feather="cpu" class="w-4 h-4"></i>
+                        </div>
+                        <span class="font-medium text-gray-700">${t}</span>
+                    </div>
+                `).join('');
+
+                // Hasil & Dampak
+                const hasilHtml = (attr.hasil || []).map(h => `
+                    <div class="bg-white border border-gray-100 shadow-sm rounded-xl p-6 flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i data-feather="${h.icon}" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-blue-600">${h.title}</h4>
+                            <p class="text-sm text-gray-600 mt-1">${h.desc}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Previews
+                const previewsHtml = (attr.previews || []).map(p => `
+                    <div class="flex-shrink-0 h-72 md:h-96 min-w-[85vw] md:min-w-[600px] lg:min-w-[800px] bg-gray-50 border border-gray-200 shadow-sm rounded-xl overflow-hidden group snap-center p-2 flex items-center justify-center">
+                        <img src="${p}" alt="Preview" class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105 rounded-lg">
+                    </div>
+                `).join('');
+
+                // Markdown body rendering if exists
+                const bodyHtml = body.trim() ? `<div class="prose prose-blue max-w-none mt-12 text-gray-700 leading-relaxed border-t border-gray-100 pt-12">${marked.parse(body)}</div>` : '';
+
+                const template = `
+                    <!-- Breadcrumbs -->
+                    <div class="text-sm text-gray-500 mb-6 flex items-center space-x-2 font-medium">
+                        <a href="index.html" class="hover:text-blue-600 transition-colors">Home</a>
+                        <span>&gt;</span>
+                        <a href="projects.html" class="hover:text-blue-600 transition-colors">Projects</a>
+                        <span>&gt;</span>
+                        <span class="text-gray-900">${attr.title}</span>
+                    </div>
+
+                    <!-- Hero Section -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                        <div>
+                            <span class="inline-block font-bold text-sm tracking-widest uppercase mb-4 ${categoryColor}">${attr.category}</span>
+                            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">${attr.title}</h1>
+                            <p class="text-lg text-gray-600 mb-8 leading-relaxed">${attr.description}</p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-10">
+                                ${tagsHtml}
+                            </div>
+                            
+                            <div class="flex flex-wrap items-center gap-6">
+                                ${attr.demo_url && attr.demo_url !== '#' ? `<a href="${attr.demo_url}" target="_blank" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">
+                                    Lihat Demo <i data-feather="external-link" class="ml-2 w-4 h-4"></i>
+                                </a>` : `
+                                <button class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gray-400 cursor-not-allowed opacity-80" disabled>
+                                    Lihat Demo <i data-feather="external-link" class="ml-2 w-4 h-4"></i>
+                                </button>
+                                `}
+                                <a href="projects.html" class="inline-flex items-center justify-center font-medium text-blue-600 hover:text-blue-700 transition-colors group">
+                                    <i data-feather="arrow-left" class="mr-2 w-4 h-4 transform group-hover:-translate-x-1 transition-transform"></i> Kembali ke Projects
+                                </a>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -inset-4 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+                            <img src="${attr.hero_image}" alt="${attr.title}" class="w-full h-auto object-contain drop-shadow-2xl">
+                        </div>
+                    </div>
+
+                    <!-- Informasi Proyek -->
+                    <div class="mb-16">
+                        <h3 class="text-base font-semibold text-gray-400 uppercase tracking-widest mb-5">Informasi Proyek</h3>
+                        <div class="flex flex-wrap gap-8 py-5 border-y border-gray-100">
+                            ${infoHtml}
+                        </div>
+                    </div>
+
+                    <!-- Masalah & Solusi -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+                        <div class="border border-gray-200 rounded-2xl p-8 bg-white hover:border-blue-200 transition-colors">
+                            <div class="flex items-center space-x-4 mb-5">
+                                <div class="w-11 h-11 rounded-full border-2 border-blue-500 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                    <i data-feather="alert-circle" class="w-5 h-5"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900">Masalah</h3>
+                            </div>
+                            <p class="text-gray-500 mb-5 leading-relaxed text-sm">${attr.masalah_desc || ''}</p>
+                            <ul class="space-y-3 text-gray-600 text-sm">
+                                ${masalahList}
+                            </ul>
+                        </div>
+                        <div class="border border-gray-200 rounded-2xl p-8 bg-white hover:border-blue-200 transition-colors">
+                            <div class="flex items-center space-x-4 mb-5">
+                                <div class="w-11 h-11 rounded-full border-2 border-blue-500 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                    <i data-feather="check-circle" class="w-5 h-5"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900">Solusi</h3>
+                            </div>
+                            <p class="text-gray-500 mb-5 leading-relaxed text-sm">${attr.solusi_desc || ''}</p>
+                            <ul class="space-y-3 text-gray-600 text-sm">
+                                ${solusiList}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Hasil & Dampak -->
+                    ${hasilHtml ? `
+                    <div class="mb-20 bg-gray-50 rounded-2xl p-8 lg:p-12 border border-gray-100">
+                        <h3 class="text-xl font-bold text-gray-900 mb-8">Hasil & Dampak</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            ${hasilHtml}
+                        </div>
+                    </div>
+                    ` : ''}
+
+                    <!-- Fitur Utama -->
+                    ${fiturList ? `
+                    <div class="mb-20">
+                        <h3 class="text-xl font-bold text-gray-900 mb-8">Fitur Utama</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            ${fiturList}
+                        </div>
+                    </div>
+                    ` : ''}
+
+                    <!-- Preview Sistem -->
+                    ${previewsHtml ? `
+                    <div class="mb-20 w-full max-w-full">
+                        <h3 class="text-xl font-bold text-gray-900 mb-8">Preview Sistem</h3>
+                        <div class="flex space-x-6 overflow-x-auto pb-8 snap-x snap-mandatory custom-scrollbar">
+                            ${previewsHtml}
+                        </div>
+                    </div>
+                    ` : ''}
+
+                    <!-- Teknologi yang Digunakan -->
+                    ${teknologiHtml ? `
+                    <div class="mb-20">
+                        <h3 class="text-xl font-bold text-gray-900 mb-8">Teknologi yang Digunakan</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            ${teknologiHtml}
+                        </div>
+                    </div>
+                    ` : ''}
+                    
+                    ${bodyHtml}
+
+                    <!-- CTA -->
+                    <div class="bg-blue-600 rounded-3xl p-8 lg:p-12 flex flex-col md:flex-row items-center justify-between shadow-xl mt-20 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mt-12 -mr-12 w-64 h-64 bg-blue-500 rounded-full opacity-20 blur-3xl"></div>
+                        <div class="flex items-start md:items-center mb-6 md:mb-0 relative z-10">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white mr-6 flex-shrink-0">
+                                <i data-feather="send" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">Punya kebutuhan sistem serupa?</h3>
+                                <p class="text-blue-100">Saya siap membantu merancang solusi digital yang sesuai dengan kebutuhan organisasi Anda.</p>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="inline-flex items-center justify-center px-10 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl relative z-10 whitespace-nowrap">
+                            Hubungi Saya <i data-feather="arrow-right" class="ml-2 w-6 h-6"></i>
+                        </a>
+                    </div>
+                `;
+
+                contentContainer.innerHTML = template;
+                if (typeof feather !== 'undefined') feather.replace();
+            }
+        });
+    </script>
+</body>
+
+</html>
