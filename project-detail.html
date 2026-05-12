@@ -62,6 +62,15 @@
     </main>
 
     <div id="footer-placeholder"></div>
+
+    <!-- Dialog Preview -->
+    <div id="image-preview-dialog" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 p-4 transition-opacity duration-300 opacity-0" onclick="closePreviewDialog(event)">
+        <button type="button" class="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none z-50 p-2" onclick="closePreviewDialog()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <img id="preview-dialog-image" src="" alt="Fullscreen Preview" class="max-h-full max-w-full object-contain transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+    </div>
+
     <script src="scripts.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
@@ -177,8 +186,8 @@
 
                 // Previews
                 const previewsHtml = (attr.previews || []).map(p => `
-                    <div class="flex-shrink-0 h-72 md:h-96 min-w-[85vw] md:min-w-[600px] lg:min-w-[800px] bg-gray-50 border border-gray-200 shadow-sm rounded-xl overflow-hidden group snap-center p-2 flex items-center justify-center">
-                        <img src="${p}" alt="Preview" class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105 rounded-lg">
+                    <div class="flex-shrink-0 h-72 md:h-96 bg-gray-50 border border-gray-200 shadow-sm rounded-xl overflow-hidden group snap-center p-2 flex items-center justify-center cursor-pointer hover:shadow-md transition-shadow" onclick="openPreviewDialog('${p}')">
+                        <img src="${p}" alt="Preview" class="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 rounded-lg">
                     </div>
                 `).join('');
 
@@ -325,6 +334,34 @@
                 if (typeof feather !== 'undefined') feather.replace();
             }
         });
+
+        // Global functions for dialog
+        window.openPreviewDialog = function(src) {
+            const dialog = document.getElementById('image-preview-dialog');
+            const img = document.getElementById('preview-dialog-image');
+            img.src = src;
+            dialog.classList.remove('hidden');
+            dialog.classList.add('flex');
+            // Trigger reflow for transition
+            void dialog.offsetWidth;
+            dialog.classList.remove('opacity-0');
+            img.classList.remove('scale-95');
+            img.classList.add('scale-100');
+        };
+
+        window.closePreviewDialog = function(event) {
+            if (event && event.target.id === 'preview-dialog-image') return;
+            const dialog = document.getElementById('image-preview-dialog');
+            const img = document.getElementById('preview-dialog-image');
+            dialog.classList.add('opacity-0');
+            img.classList.remove('scale-100');
+            img.classList.add('scale-95');
+            setTimeout(() => {
+                dialog.classList.add('hidden');
+                dialog.classList.remove('flex');
+                img.src = '';
+            }, 300);
+        };
     </script>
 </body>
 
